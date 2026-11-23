@@ -19,14 +19,22 @@ export const PALETTES = {
     sand: "#f0c98f", snow: "#fff3f0", water: "#9fd0ff", trunk: "#6b3f2a", leaf: "#3f8a4f",
     bloom: "#ff9fc4", copper: "#ff8a4c", tin: "#d8dde6",
     light: { top: 1.12, left: 0.92, right: 0.66 }, tint: "#ff8db0", tintAmt: 0.16,
+    brick: "#b9aebf", roof: "#d0556b", crystal: "#8ff3ff", banner: "#ffcf7a",
+  },
+  arcane: {
+    grass: "#5fae8e", grassSide: "#4b8c74", dirt: "#5d4766", stone: "#5f5873", deep: "#3d3550",
+    sand: "#c9b7e0", snow: "#eef0ff", water: "#7fd8ff", trunk: "#3f2d4a", leaf: "#6a4fa8",
+    bloom: "#4fd6c8", copper: "#b48cff", tin: "#8ff3ff",
+    brick: "#a7a1bd", roof: "#5b3f9e", crystal: "#8ff3ff", banner: "#ff7fa6",
+    light: { top: 1.08, left: 0.86, right: 0.6 }, tint: "#6d5cff", tintAmt: 0.2,
   },
 };
 
-export function buildIsland({ seed = 7, N = 30, peak = 11, lake = true, trees = 0.07, depth = 14 } = {}) {
+export function buildIsland({ seed = 7, N = 30, peak = 11, lake = true, trees = 0.07, depth = 14, castle = false, crystals = 0 } = {}) {
   const r = mulberry(seed), noise = makeNoise(r), cubes = [], occ = new Set();
   const key = (x, y, z) => x + "," + y + "," + z;
   const put = (x, y, z, m) => { const k = key(x, y, z); if (occ.has(k)) return; occ.add(k); cubes.push({ x, y, z, m, j: r() }); };
-  const H = [], W = 3, c = (N - 1) / 2;
+  const H = [], W = 3, c = (N - 1) / 2, top = new Map(), bot = new Map();
   for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
     const dx = (x - c) / c, dy = (y - c) / c;
     const d = Math.sqrt(dx * dx + dy * dy) + (noise(x * 0.21 + 40, y * 0.21) - 0.5) * 0.55;
@@ -41,13 +49,17 @@ export function buildIsland({ seed = 7, N = 30, peak = 11, lake = true, trees = 
     const dx = (x - c) / c, dy = (y - c) / c, d = Math.sqrt(dx * dx + dy * dy);
     if (h < W && (!lake || d > 0.42 || noise(x * 0.2 + 70, y * 0.2) < 0.45)) h = W;
     const bottom = -Math.round((1 - Math.min(1, d * 1.05)) ** 1.4 * depth * (0.55 + noise(x * 0.3, y * 0.3 + 9) * 0.9)) - 1;
+    top.set(x + "," + y, h); bot.set(x + "," + y, bottom);
+    if (crystals && r() < crystals * 0.5) { const L = 1 + ((r() * 4) | 0); for (let z = bottom - 1; z >= bottom - L; z--) put(x, y, z, "crystal"); }
     for (let z = bottom; z < h; z++) {
       let m = z === h - 1 ? (h >= peak + 1 ? "snow" : h <= W && lake && d < 0.5 ? "sand" : "grass") : z >= h - 3 ? "dirt" : "stone";
       if (m === "stone") { const q = r(); m = q < 0.035 ? "copper" : q < 0.05 ? "tin" : z < bottom + 3 ? "deep" : "stone"; }
       put(x, y, z, m);
     }
     if (lake && h < W) for (let z = h; z < W; z++) put(x, y, z, "water");
-    if (h > W && h < peak - 1 && r() < trees) {
+    const nearC = castle && Math.abs(x - c) < 6 && Math.abs(y - c) < 6;
+    if (crystals && !nearC && h > W && r() < crystals * 0.25) { const L = 1 + ((r() * 3) | 0); for (let z = h; z < h + L; z++) put(x, y, z, "crystal"); continue; }
+    if (!nearC && h > W && h < peak - 1 && r() < trees) {
       const th = 3 + ((r() * 2) | 0), lm = r() < 0.45 ? "bloom" : "leaf";
       for (let z = h; z < h + th; z++) put(x, y, z, "trunk");
       for (let lz = h + th - 1; lz < h + th + 2; lz++) {
@@ -60,6 +72,27 @@ export function buildIsland({ seed = 7, N = 30, peak = 11, lake = true, trees = 
       }
       if (r() < 0.6) put(x, y, h + th + 2, lm);
     }
+  }
+  if (castle) {
+    const tower = (x0, y0, w, hgt, roof) => {
+      let base = -99; for (let y = y0; y < y0 + w; y++) for (let x = x0; x < x0 + w; x++) base = Math.max(base, top.get(x + "," + y) ?? 0);
+      for (let y = y0; y < y0 + w; y++) for (let x = x0; x < x0 + w; x++) {
+        const t0 = top.get(x + "," + y) ?? base;
+        for (let z = Math.min(t0, base) - 1; z < base + hgt; z++) put(x, y, z, "brick");
+        const edge = x === x0 || y === y0 || x === x0 + w - 1 || y === y0 + w - 1;
+        if (!roof && edge && (x + y) % 2 === 0) put(x, y, base + hgt, "brick");
+      }
+      if (roof) for (let k = 0; k * 2 < w; k++) for (let y = y0 + k; y < y0 + w - k; y++) for (let x = x0 + k; x < x0 + w - k; x++) put(x, y, base + hgt + k, "roof");
+      return base + hgt;
+    };
+    const ci = Math.round(c);
+    const t1 = tower(ci - 2, ci - 2, 5, 9, true);
+    put(ci, ci, t1 + 3, "banner"); put(ci, ci, t1 + 4, "banner");
+    tower(ci + 3, ci - 4, 3, 6, false);
+    tower(ci - 5, ci + 2, 3, 5, true);
+    // wall between towers
+    const wb = (top.get((ci + 2) + "," + (ci + 1)) ?? 4);
+    for (let x = ci - 4; x <= ci + 3; x++) for (let z = (top.get(x + "," + (ci + 3)) ?? wb) - 1; z < wb + 3; z++) put(x, ci + 3, z, "brick");
   }
   cubes.sort((a, b) => (a.x + a.y) - (b.x + b.y) || a.z - b.z || a.x - b.x);
   return { cubes, occ, key };
@@ -90,7 +123,9 @@ export function drawIsland(canvas, opts = {}) {
     const isW = m === "water";
     let base = col[m] || col.stone;
     const jit = 0.93 + q.j * 0.12;
+    const glow = m === "crystal" || m === "banner";
     const shade = (face, k, mat = base) => {
+      if (glow) k = face === "top" ? 1.15 : face === "left" ? 1.0 : 0.85;
       let c = mix(mat, tint, pal.tintAmt * (face === "right" ? 1.6 : face === "left" ? 0.6 : 0.4));
       c = c.map((v) => v * k * jit);
       // atmospheric depth: lower blocks fade a bit into the dusk
