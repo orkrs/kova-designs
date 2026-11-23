@@ -1,10 +1,24 @@
-import { drawIsland, drawCloud, PALETTES } from "./voxel.js";
+import { drawIsland, drawCloud, PALETTES } from "./voxel.js?v=4";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const TFG = { seed: 11, N: 36, peak: 13, trees: 0.035, depth: 18 };
 const RPG = { seed: 29, N: 34, peak: 11, trees: 0.04, depth: 17, castle: true, crystals: 0.05, lake: false, pal: PALETTES.arcane };
 const kind = (k) => (k === "rpg" ? RPG : TFG);
+function haze(c) {
+  const px = 8, W = Math.ceil(c.clientWidth / px), H = Math.ceil(c.clientHeight / px);
+  c.width = W; c.height = H; const x = c.getContext("2d");
+  const rows = [[0.32, "rgb(120 72 130 / .28)", 3], [0.52, "rgb(64 42 96 / .45)", 7], [0.72, "rgb(34 25 58 / .7)", 11]];
+  for (const [base, col, seed] of rows) {
+    x.fillStyle = col; let s = seed;
+    for (let i = 0; i < W; i++) {
+      const t = i / W, n = Math.sin(t * 9 + seed) * 0.5 + Math.sin(t * 23 + seed * 2) * 0.3 + Math.sin(t * 51 + seed * 3) * 0.2;
+      const top = Math.round(H * (base - n * 0.12));
+      x.fillRect(i, top, 1, H - top);
+    }
+  }
+}
 function paint() {
+  haze(document.querySelector(".haze"));
   drawIsland($(".isle-tfg"), { ...TFG, fit: 0.94, anchorY: 0.42 });
   drawIsland($(".isle-rpg"), { ...RPG, fit: 0.94, anchorY: 0.42 });
   drawIsland($(".isle-a"), { seed: 4, N: 16, peak: 8, lake: false, trees: 0.1, depth: 9, hazeAmt: 0.55, haze: "#e9a0b4" });
