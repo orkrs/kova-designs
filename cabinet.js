@@ -1,4 +1,4 @@
-import { $, $$, session, drawBody, bridgeValidity, busy, wait, go, mountScene } from "./site.js?v=9";
+import { $, $$, session, drawBody, drawHead, bridgeValidity, busy, wait, go, mountScene } from "./site.js?v=10";
 
 const s = session.get();
 const me = s || { nick: "Kova_Player", email: "player@mail.ru", via: "email", since: Date.parse("2026-11-01") };
@@ -24,9 +24,8 @@ $$("[data-end]").forEach((b) => b.addEventListener("click", () => { const li = b
 $$("[data-logout]").forEach((b) => b.addEventListener("click", () => { session.clear(); go("login/"); }));
 $('[data-link="dc"]').addEventListener("click", async (e) => { const b = e.currentTarget; if (b.classList.contains("btn-discord")) { b.textContent = "Подключаем…"; await wait(900); session.set({ ...me, via: "discord" }); location.reload(); } else { say("Discord отвязан"); $("[data-dc]").textContent = "не привязан"; } });
 
-// balance (mock top-up)
-let bal = 1250; const fmt = new Intl.NumberFormat("ru-RU");
-$$("[data-add]").forEach((b) => b.addEventListener("click", () => { bal += +b.dataset.add; $("[data-bal]").textContent = fmt.format(bal); const li = document.createElement("li"); li.innerHTML = `<span>Пополнение</span><span class="plus">+${b.dataset.add}</span>`; $(".tx").prepend(li); say(`+${b.dataset.add} кристаллов (демо)`); }));
+// settlement card: your own head next to the role
+const hm = $("[data-head-me]"); if (hm) drawHead(hm, me.nick, 4);
 
 // skin upload (local preview only)
 $("[data-skin-btn]").addEventListener("click", () => $("[data-skin-file]").click());

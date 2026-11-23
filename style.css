@@ -441,3 +441,31 @@ h2 { margin: 0; font: 800 clamp(2.25rem, 1.4rem + 3.2vw, 4rem)/1 var(--display);
 .auth-nick { max-inline-size: 12ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 @media (max-width: 560px) { .auth-nick { display: none; } .auth-link.auth-on { padding-inline-end: .3rem; } }
 [data-server="rpg"] .nav nav a::after { background: var(--arcane); }
+
+/* ---------- settlements (compact home section) ---------- */
+.cities { padding-block: clamp(3.5rem, 7vw, 6rem); background: var(--night-2); }
+.cities-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.feats { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.feats li { display: grid; grid-template-columns: auto 1fr; column-gap: .7rem; padding: .75rem .85rem; border-radius: 14px; background: rgb(255 255 255 / .04); box-shadow: inset 0 0 0 1px var(--line); }
+.feats li:last-child { grid-column: 1 / -1; }
+.feats b { font: 600 .9375rem/1.3 var(--display); }
+.feats span:not(.f-ico) { grid-column: 2; font-size: .8125rem; color: var(--muted); }
+.f-ico { grid-row: span 2; width: 18px; height: 18px; margin-top: 2px; background: var(--sun); -webkit-mask: var(--m) center/contain no-repeat; mask: var(--m) center/contain no-repeat; }
+.pill-dev { font-size: .8125rem; color: var(--muted); }
+.city-demo { position: relative; display: grid; border-radius: 26px; overflow: hidden; min-block-size: 380px;
+  background: radial-gradient(80% 60% at 55% 70%, rgb(255 214 160 / .75), transparent 60%), linear-gradient(180deg, #3a2a59, #b45a86 55%, #f08a8f 80%, #ffc79a); box-shadow: inset 0 0 0 1px var(--line); }
+.cd-art canvas { position: absolute; inset: 0 0 18% 20%; width: 80%; height: 82%; }
+.cd-card { position: relative; align-self: end; justify-self: start; display: grid; gap: .8rem; width: min(300px, 100% - 2rem); margin: 1rem; padding: 1rem; border-radius: 18px; background: rgb(23 18 42 / .78); box-shadow: inset 0 0 0 1px var(--glass-line); backdrop-filter: blur(12px); }
+.cd-top, .lc-top { display: flex; align-items: center; gap: .75rem; }
+.cd-top b, .lc-top b { display: block; font: 700 1.0625rem var(--display); }
+.cd-top small, .lc-top small { color: var(--muted); font-size: .8125rem; }
+canvas.banner { width: 33px; height: 45px; image-rendering: pixelated; flex: none; filter: drop-shadow(0 4px 6px rgb(0 0 0 / .35)); }
+canvas.banner.big { width: 66px; height: 90px; }
+.cd-roles { display: flex; flex-wrap: wrap; gap: .3rem; margin: 0; padding: 0; list-style: none; }
+.cd-roles li { padding: .25rem .55rem; border-radius: 7px; font-size: .75rem; font-weight: 600; background: rgb(255 255 255 / .08); }
+.cd-rel { display: grid; gap: .4rem; margin: 0; padding: 0; list-style: none; font-size: .8125rem; }
+.cd-rel li { display: flex; align-items: center; gap: .5rem; }
+.dot-ok, .dot-warn, .dot-war, .dot-trade { width: 8px; height: 8px; flex: none; }
+.dot-ok { background: #7dffa8; } .dot-warn { background: var(--sun); } .dot-war { background: #ff6b7d; } .dot-trade { background: var(--arcane); }
+@media (max-width: 860px) { .cities-grid { grid-template-columns: 1fr; } .city-demo { min-block-size: 320px; } }
+@media (max-width: 480px) { .feats { grid-template-columns: 1fr; } }

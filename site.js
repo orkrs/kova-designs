@@ -1,6 +1,6 @@
 // Shared by every page: fake session in the header, sunset/moon world toggle,
 // form helpers (aria-invalid bridge, show password, submit loading), pixel skins, island scenes.
-import { IslandView } from "./engine.js?v=9";
+import { IslandView } from "./engine.js?v=10";
 
 const root = document.documentElement;
 export const $ = (s, r = document) => r.querySelector(s);
@@ -145,3 +145,32 @@ addEventListener("pagereveal", (e) => {
   if (/register/.test(from) && /login/.test(to)) e.viewTransition.types.add("back");
   else if (/login/.test(from) && /register/.test(to)) e.viewTransition.types.add("forward");
 });
+
+// ---------- pixel heraldry for settlements (deterministic from the name) ----------
+const TINCT = ["#b4563c", "#2c4f8a", "#3f7a2e", "#6a4fa8", "#1f1a2e", "#c98a3c", "#8b2f3f"];
+const METAL = ["#ffcf7a", "#e9ecff"];
+const CHARGES = [
+  [".X.X.X.", ".XXXXX.", "..XXX..", "..XXX..", "..X.X..", ".XXXXX."],            // tower
+  ["XXXXX..", "XXXXX..", "..X....", "..X....", "..X....", "..X...."],            // hammer
+  ["...X...", "..XXX..", "XXXXXXX", ".XXXXX.", ".XX.XX.", "X.....X"],            // star
+  ["XXXXXX.", "X....XX", "...X...", "..X....", ".X.....", "X......"],            // pick
+  ["..XXX..", ".XXXXX.", "XXXXXXX", "...X...", "...X...", "..XXX.."],            // tree
+];
+export function drawBanner(c, name = "KOVA", px = 4) {
+  const h = hash(name), W = 11, H = 15; c.width = W * px; c.height = H * px;
+  const x = c.getContext("2d"), f1 = TINCT[h % TINCT.length], f2 = TINCT[(h >>> 4) % TINCT.length] === f1 ? "#1f1a2e" : TINCT[(h >>> 4) % TINCT.length];
+  const metal = METAL[(h >>> 8) & 1], div = (h >>> 10) % 3, ch = CHARGES[(h >>> 12) % CHARGES.length];
+  const p = (cx, cy, col) => { x.fillStyle = col; x.fillRect(cx * px, cy * px, px, px); };
+  x.fillStyle = "#3a2b1f"; x.fillRect(0, 0, W * px, px);                       // pole bar
+  for (let yy = 1; yy < H; yy++) for (let xx = 0; xx < W; xx++) {
+    if (yy >= H - 2 && Math.abs(xx - 5) <= (yy - (H - 2)) * 2 + 0) continue;      // swallowtail notch
+    let col = f1;
+    if (div === 1 && xx >= 6) col = f2; else if (div === 2 && yy >= 8) col = f2;
+    if (xx === 0 || xx === W - 1) col = "#00000040";
+    p(xx, yy, col);
+  }
+  ch.forEach((row, ry) => [...row].forEach((v, rx) => v === "X" && p(2 + rx, 4 + ry, metal)));
+  x.fillStyle = "#ffffff22"; x.fillRect(px, px, px, (H - 3) * px);
+}
+export function paintBanners(root = document) { root.querySelectorAll("canvas[data-banner]").forEach((c) => drawBanner(c, c.dataset.banner, 4)); }
+paintBanners();

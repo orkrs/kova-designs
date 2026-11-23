@@ -1,5 +1,5 @@
-import { IslandView, renderStatic, drawCloud } from "./engine.js?v=9";
-import { world } from "./site.js?v=9";
+import { IslandView, renderStatic, drawCloud } from "./engine.js?v=10";
+import { world } from "./site.js?v=10";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const root = document.documentElement;
@@ -28,6 +28,7 @@ const cardViews = $$(".mini").map((c) => new IslandView(c, c.dataset.kind === "r
 cardViews.forEach((v) => v.show(true));
 function statics() {
   $$(".l-ico").forEach((c) => renderStatic(c, c.dataset.kind === "rpg" ? { scene: "shard", seed: 13, pal: "arcane", fit: 0.92 } : { scene: "house", seed: 9, pal: "dusk", fit: 0.88, padTop: 0.2 }));
+  $$(".cd-isle").forEach((c) => renderStatic(c, { scene: "house", seed: 9, pal: "dusk", fit: 0.86, padTop: 0.22 }));
   $$(".thumb").forEach((c, i) => renderStatic(c, c.dataset.kind === "rpg" ? { scene: "arcane", seed: 29, pal: "arcane", fit: 0.8 } : i === 0 ? { scene: "house", seed: 21, pal: "dusk", fit: 0.72, padTop: 0.2 } : { scene: "mine", seed: 33, pal: "dusk", fit: 0.72, padTop: 0.1 }));
 }
 

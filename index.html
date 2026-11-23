@@ -9,7 +9,7 @@
 <script>try{var w=localStorage.getItem("kova.world");if(w==="rpg"){document.documentElement.dataset.server="rpg"}}catch(e){}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 2 2%22 shape-rendering=%22crispEdges%22%3E%3Crect width=%221%22 height=%221%22 fill=%22%23ffcf7a%22/%3E%3Crect x=%221%22 width=%221%22 height=%221%22 fill=%22%23ff7fa6%22/%3E%3Crect y=%221%22 width=%221%22 height=%221%22 fill=%22%23fff%22/%3E%3Crect x=%221%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23ff9b6b%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 <link rel="expect" href="#main" blocking="render">
 </head>
 <body>
@@ -138,13 +138,33 @@
   </div>
 </section>
 
+<section id="cities" class="cities" aria-labelledby="cities-title">
+  <div class="wrap cities-grid">
+    <div class="reveal">
+      <p class="kicker">02 — Поселения</p>
+      <h2 id="cities-title">Свои города.<br>Свои законы.</h2>
+      <p class="sec-lede">Собственный мод KOVA: игроки строят города, делят должности, торгуют, заключают союзы и воюют.</p>
+      <ul class="feats"><li><span class="f-ico" aria-hidden="true" style="--m:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M3 0h1v1h1v2h2v4H0V3h2V1h1z'/%3E%3C/svg%3E&quot;)"></span><b>Города</b><span>Основывайте поселение, расширяйте территорию</span></li><li><span class="f-ico" aria-hidden="true" style="--m:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M2 0h3v3H2zM1 4h5v3H1z'/%3E%3C/svg%3E&quot;)"></span><b>Горожане и должности</b><span>Мэр, казначей, стража, торговцы</span></li><li><span class="f-ico" aria-hidden="true" style="--m:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M0 1h5V0h1v1h1v1H6v1H5V2H0zm2 3v1h5v1H2v1H1V6H0V5h1V4z'/%3E%3C/svg%3E&quot;)"></span><b>Торговля</b><span>Рынки и маршруты между городами</span></li><li><span class="f-ico" aria-hidden="true" style="--m:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M0 2h3v1H1v1h2v1H0zm4 0h3v3H4V4h2V3H4zM2 3h3v1H2z'/%3E%3C/svg%3E&quot;)"></span><b>Альянсы</b><span>Союзы и общие договоры</span></li><li><span class="f-ico" aria-hidden="true" style="--m:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M5 0h2v2H6v1H5v1H4v1h1v1h1v1H5V6H4V5H3v1H2v1H0V6h1V5h1V4H1V3h1v1h1V3h1V2h1z'/%3E%3C/svg%3E&quot;)"></span><b>Войны и споры</b><span>Осады, границы, голосования</span></li></ul>
+      <div class="cta-row" style="margin-top:1.75rem"><a class="btn btn-sun" href="cabinet/#city">Моё поселение</a><span class="pill-dev">мод в разработке</span></div>
+    </div>
+    <div class="city-demo reveal" aria-label="Пример поселения">
+      <div class="cd-art" aria-hidden="true"><canvas class="cd-isle" data-kind="house"></canvas></div>
+      <div class="cd-card">
+        <div class="cd-top"><canvas class="banner" data-banner="Медноград" aria-hidden="true"></canvas><span><b>Медноград</b><small>Уровень 3 · 24 жителя</small></span></div>
+        <ul class="cd-roles"><li>Мэр</li><li>Казначей</li><li>Стража ×3</li><li>Торговцы ×2</li></ul>
+        <ul class="cd-rel"><li><span class="dot-ok" aria-hidden="true"></span>Северный союз</li><li><span class="dot-warn" aria-hidden="true"></span>Спор о границе</li><li><span class="dot-war" aria-hidden="true"></span>Война · счёт 3 : 1</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="road" class="road" aria-labelledby="road-title">
   <div class="wrap">
-    <div class="sec-head reveal"><p class="kicker">02 — Путь сети</p><h2 id="road-title">Дорожная карта</h2></div>
+    <div class="sec-head reveal"><p class="kicker">03 — Путь сети</p><h2 id="road-title">Дорожная карта</h2></div>
     <ol class="track">
       <li class="done"><span class="node" aria-hidden="true"></span><time>Осень 2026</time><b>Бета-мир</b><span>Lorem ipsum dolor.</span></li>
-      <li class="now"><span class="node" aria-hidden="true"></span><time>Зима 2026</time><b>Запуск TFG</b><span>Сезон 01.</span></li>
-      <li class="next"><span class="node" aria-hidden="true"></span><time>2027</time><b>RPG-сервер</b><span>Sed do eiusmod.</span></li>
+      <li class="now"><span class="node" aria-hidden="true"></span><time>Зима 2026</time><b>Запуск TFG</b><span>Сезон 01 · бета «Поселений».</span></li>
+      <li class="next"><span class="node" aria-hidden="true"></span><time>2027</time><b>RPG-сервер</b><span>Новая сборка.</span></li>
       <li class="far"><span class="node" aria-hidden="true"></span><time>Позже</time><b>Новые миры</b><span>Ut enim ad minim.</span></li>
     </ol>
   </div>
@@ -153,7 +173,7 @@
 <section id="account" class="account" aria-labelledby="acc-title">
   <div class="wrap acc-grid">
     <div class="acc-copy reveal">
-      <p class="kicker">03 — Один вход</p>
+      <p class="kicker">04 — Один вход</p>
       <h2 id="acc-title">Один аккаунт.<br>Все миры.</h2>
       <p class="sec-lede">Лаунчер сам ставит нужную сборку и держит её в актуальном состоянии.</p>
       <div class="cta-row"><a class="btn btn-sun" href="launcher/">Смотреть лаунчер</a><span class="muted small">Windows · macOS · Linux</span></div>
@@ -174,7 +194,7 @@
 
 <section id="news" class="news" aria-labelledby="news-title">
   <div class="wrap">
-    <div class="sec-head row reveal"><div><p class="kicker">04 — Журнал</p><h2 id="news-title">Новости</h2></div><a class="link" href="#">Все записи →</a></div>
+    <div class="sec-head row reveal"><div><p class="kicker">05 — Журнал</p><h2 id="news-title">Новости</h2></div><a class="link" href="#">Все записи →</a></div>
     <div class="cards">
       <article class="card reveal"><canvas class="thumb" data-seed="21"></canvas><p class="card-meta"><span class="tag tag-tfg">TFG</span><time datetime="2026-11-20">20 ноя</time></p><h3><a href="#">Lorem ipsum dolor sit amet</a></h3></article>
       <article class="card reveal"><canvas class="thumb" data-seed="5" data-kind="rpg"></canvas><p class="card-meta"><span class="tag tag-rpg">RPG</span><time datetime="2026-11-12">12 ноя</time></p><h3><a href="#">Consectetur adipiscing elit sed</a></h3></article>
@@ -187,7 +207,7 @@
   <div class="wrap">
     <div class="dc reveal">
       <div class="dc-clouds" aria-hidden="true"></div>
-      <p class="kicker">05 — Сообщество</p>
+      <p class="kicker">06 — Сообщество</p>
       <h2 id="dc-title">4 200 игроков<br>уже в Discord</h2>
       <a class="btn btn-light" href="#">Вступить в Discord</a>
     </div>
@@ -199,7 +219,7 @@
   <div class="wrap foot-in">
     <div class="foot-cols">
       <div><p class="brand"><span class="brand-mark" aria-hidden="true"></span><span translate="no">KOVA</span></p><p class="muted small">Сеть серверов. Не связано с Mojang и Microsoft.</p></div>
-      <nav aria-label="Сервера"><p class="fh">Сервера</p><a href="#servers">TerraFirmaGreg</a><a href="#servers">RPG · скоро</a><a href="launcher/">Лаунчер</a></nav>
+      <nav aria-label="Сервера"><p class="fh">Сервера</p><a href="#servers">TerraFirmaGreg</a><a href="#servers">RPG · скоро</a><a href="#cities">Поселения</a><a href="#road">Дорожная карта</a><a href="launcher/">Лаунчер</a></nav>
       <nav aria-label="Аккаунт"><p class="fh">Аккаунт</p><a href="login/">Вход</a><a href="register/">Регистрация</a><a href="cabinet/">Кабинет</a></nav>
       <nav aria-label="Сообщество"><p class="fh">Сообщество</p><a href="#">Discord</a><a href="#">Правила</a><a href="#">Поддержка</a></nav>
     </div>
@@ -207,7 +227,7 @@
     <p class="foot-copy muted small">© 2026 KOVA</p>
   </div>
 </footer>
-<script type="module" src="main.js?v=9"></script>
-<script type="module" src="copy.js?v=9"></script>
+<script type="module" src="main.js?v=10"></script>
+<script type="module" src="copy.js?v=10"></script>
 </body>
 </html>
