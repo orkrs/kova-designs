@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ru" data-server="tfg" data-page="cabinet">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Кабинет — KOVA</title>
+<meta name="description" content="Личный кабинет KOVA.">
+<meta name="theme-color" content="#2a1f45">
+<script>try{var w=localStorage.getItem("kova.world");if(w==="rpg"){document.documentElement.dataset.server="rpg"}}catch(e){}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 2 2%22 shape-rendering=%22crispEdges%22%3E%3Crect width=%221%22 height=%221%22 fill=%22%23ffcf7a%22/%3E%3Crect x=%221%22 width=%221%22 height=%221%22 fill=%22%23ff7fa6%22/%3E%3Crect y=%221%22 width=%221%22 height=%221%22 fill=%22%23fff%22/%3E%3Crect x=%221%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23ff9b6b%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=9"><link rel="stylesheet" href="../pages.css?v=9">
+<link rel="expect" href="#main" blocking="render">
+</head><body>
+<a class="skip" href="#main">К содержимому</a>
+<header class="nav">
+  <a class="brand" href="../" aria-label="KOVA — на главную"><span class="brand-mark" aria-hidden="true"></span><span translate="no">KOVA</span></a>
+  <nav aria-label="Основное">
+    <a href="../#servers">Сервера</a><a href="../#road">Дорожная карта</a><a href="../launcher/">Лаунчер</a><a href="../#news">Новости</a>
+  </nav>
+  <div class="nav-end">
+    <span class="net-pill"><span class="live" aria-hidden="true"></span><b>128</b>&nbsp;в сети</span>
+    <button type="button" class="world-btn" aria-pressed="false" aria-label="Тема: закат TFG. Переключить на ночь RPG"><span class="wb-sun" aria-hidden="true"></span><span class="wb-moon" aria-hidden="true"></span></button>
+    <a class="btn btn-ghost auth-link" href="../login/" data-auth>Войти</a>
+  </div>
+</header>
+<main id="main" class="page">
+  <div class="psky" aria-hidden="true"><div class="stars-bg"></div></div>
+  <div class="cab">
+    <section class="cab-hero" aria-labelledby="who">
+      <div class="orb sun" aria-hidden="true"></div><div class="orb moon" aria-hidden="true"></div>
+      <div class="isle-slot scene" aria-hidden="true"><canvas class="isle" data-world="tfg" data-scene="house"></canvas><canvas class="isle" data-world="rpg" data-scene="shard"></canvas></div>
+      <div class="skin-wrap rise" style="--i:0"><canvas class="skin" role="img" aria-label="Скин игрока"></canvas></div>
+      <div class="who rise" style="--i:1">
+        <p class="eyebrow-s">Личный кабинет</p>
+        <h1 id="who" translate="no" data-nick>Player</h1>
+        <div class="who-meta"><span class="pill pill-sun">Игрок · сезон 01</span><span data-since>С нами с ноября 2026</span></div>
+      </div>
+      <div class="cab-actions rise" style="--i:2"><a class="btn btn-sun themed" href="../launcher/">Играть</a><button type="button" class="btn btn-ghost" data-skin-btn>Сменить скин</button></div>
+    </section>
+
+    <p class="demo-note rise" style="--i:3" data-demo hidden>Это демо-профиль. <a href="../login/">Войдите</a>, чтобы увидеть свой.</p>
+
+    <div class="cab-body">
+      <nav class="cab-nav panel rise" style="--i:3" aria-label="Разделы кабинета">
+        <a href="#overview" aria-current="true"><span class="ni" aria-hidden="true" style="-webkit-mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M3 0h1v1h1v1h1v1h1v1H6v3H4V5H3v2H1V4H0V3h1V2h1V1h1z'/%3E%3C/svg%3E&quot;) center/contain no-repeat;mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M3 0h1v1h1v1h1v1h1v1H6v3H4V5H3v2H1V4H0V3h1V2h1V1h1z'/%3E%3C/svg%3E&quot;) center/contain no-repeat"></span>Обзор</a>
+        <a href="#servers"><span class="ni" aria-hidden="true" style="-webkit-mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h7v3H0zm0 4h7v3H0z'/%3E%3C/svg%3E&quot;) center/contain no-repeat;mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h7v3H0zm0 4h7v3H0z'/%3E%3C/svg%3E&quot;) center/contain no-repeat"></span>Сервера</a>
+        <a href="#balance"><span class="ni" aria-hidden="true" style="-webkit-mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M2 0h3v1h1v1h1v1H6v1H5v1H4v1H3V5H2V4H1V3H0V2h1V1h1z'/%3E%3C/svg%3E&quot;) center/contain no-repeat;mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M2 0h3v1h1v1h1v1H6v1H5v1H4v1H3V5H2V4H1V3H0V2h1V1h1z'/%3E%3C/svg%3E&quot;) center/contain no-repeat"></span>Баланс</a>
+        <a href="#accounts"><span class="ni" aria-hidden="true" style="-webkit-mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M0 2h3v1H1v1h2v1H0zm4 0h3v3H4V4h2V3H4zM2 3h3v1H2z'/%3E%3C/svg%3E&quot;) center/contain no-repeat;mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M0 2h3v1H1v1h2v1H0zm4 0h3v3H4V4h2V3H4zM2 3h3v1H2z'/%3E%3C/svg%3E&quot;) center/contain no-repeat"></span>Аккаунты</a>
+        <a href="#security"><span class="ni" aria-hidden="true" style="-webkit-mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M2 0h3v1h1v2h1v4H0V3h1V1h1zm0 1v2h3V1z'/%3E%3C/svg%3E&quot;) center/contain no-repeat;mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M2 0h3v1h1v2h1v4H0V3h1V1h1zm0 1v2h3V1z'/%3E%3C/svg%3E&quot;) center/contain no-repeat"></span>Безопасность</a>
+        <a href="#notify"><span class="ni" aria-hidden="true" style="-webkit-mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M3 0h1v1h1v1h1v3h1v1H0V5h1V2h1V1h1zM3 6h1v1H3z'/%3E%3C/svg%3E&quot;) center/contain no-repeat;mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M3 0h1v1h1v1h1v3h1v1H0V5h1V2h1V1h1zM3 6h1v1H3z'/%3E%3C/svg%3E&quot;) center/contain no-repeat"></span>Уведомления</a>
+        <span class="sep" aria-hidden="true"></span>
+        <button type="button" class="out" data-logout><span class="ni" aria-hidden="true" style="-webkit-mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h4v1H1v5h3v1H0zm4 2h1v1h2v1H5v1H4z'/%3E%3C/svg%3E&quot;) center/contain no-repeat;mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h4v1H1v5h3v1H0zm4 2h1v1h2v1H5v1H4z'/%3E%3C/svg%3E&quot;) center/contain no-repeat"></span>Выйти</button>
+      </nav>
+
+      <div class="cab-grid">
+        <section class="card-c panel w6 rise" style="--i:4" id="overview" aria-labelledby="h-srv">
+          <div class="ch"><h2 id="h-srv">Статистика по серверам</h2><span class="muted" id="servers">обновлено только что</span></div>
+          <div class="srvstat">
+            <article class="sv sv-tfg">
+              <div class="sv-top"><span class="live" aria-hidden="true"></span>TerraFirmaGreg<span class="pill pill-ok">онлайн</span></div>
+              <dl class="kpis">
+                <div><dt>Наиграно</dt><dd>142 ч</dd></div>
+                <div><dt>Был в игре</dt><dd><time datetime="2026-11-23T14:10">сегодня</time></dd></div>
+                <div><dt>Квесты</dt><dd>64/210</dd></div>
+              </dl>
+              <div><p class="hint" style="margin-bottom:.4rem">Технологический уровень · <b style="color:#ffb347">MV</b></p>
+              <div class="tierbar" aria-label="Уровень 3 из 5"><i class="on" style="--t:#a6abb5"></i><i class="on" style="--t:#e8e8f0"></i><i class="on" style="--t:#ffb347"></i><i style="--t:#ffe14d"></i><i style="--t:#c08bff"></i></div></div>
+            </article>
+            <article class="sv sv-rpg">
+              <div class="sv-top"><span class="lock" aria-hidden="true"></span>RPG<span class="pill pill-arc">скоро</span></div>
+              <div class="sv-soon"><b>Скоро</b><span>Сервер ещё в разработке.<br>Сообщим о запуске.</span>
+              <label class="toggle-row" style="gap:.6rem"><input class="switch-t" type="checkbox" checked data-toast="Сообщим о запуске RPG"> Уведомить о запуске</label></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="card-c panel w2 rise" style="--i:5" id="balance" aria-labelledby="h-bal">
+          <div class="ch"><h2 id="h-bal">Баланс</h2></div>
+          <p class="bal"><span class="gem" aria-hidden="true"></span><span data-bal>1&nbsp;250</span><small>кристаллов</small></p>
+          <div class="packs" role="group" aria-label="Пополнить">
+            <button type="button" data-add="100">+100<small>99 ₽</small></button>
+            <button type="button" data-add="500">+500<small>449 ₽</small></button>
+            <button type="button" data-add="1200">+1200<small>990 ₽</small></button>
+          </div>
+          <ul class="tx" aria-label="Последние операции">
+            <li><span>Пополнение</span><span class="plus">+500</span></li>
+            <li><span>Набор «Кузнец»</span><span class="minus">−300</span></li>
+          </ul>
+        </section>
+
+        <section class="card-c panel w4 rise" style="--i:6" id="accounts" aria-labelledby="h-acc">
+          <div class="ch"><h2 id="h-acc">Привязанные аккаунты</h2></div>
+          <ul class="list">
+            <li><span class="li-ico dc" aria-hidden="true"><span class="dc-logo"></span></span><span class="grow"><b>Discord</b><small data-dc>@kova_miner</small></span><button type="button" class="btn btn-ghost btn-sm" data-link="dc">Отвязать</button></li>
+            <li><span class="li-ico" aria-hidden="true"><span class="mail-px" style="width:18px;height:14px"></span></span><span class="grow"><b>Email</b><small data-email translate="no">player@mail.ru</small></span><span class="pill pill-ok">подтверждён</span></li>
+            <li><span class="li-ico" aria-hidden="true"><span class="ni" aria-hidden="true" style="-webkit-mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h7v3H0zm0 4h7v3H0z'/%3E%3C/svg%3E&quot;) center/contain no-repeat;mask:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h7v3H0zm0 4h7v3H0z'/%3E%3C/svg%3E&quot;) center/contain no-repeat"></span></span><span class="grow"><b>Лаунчер</b><small>Windows · вход 2 ч назад</small></span><a class="btn btn-ghost btn-sm" href="../launcher/">Открыть</a></li>
+          </ul>
+        </section>
+
+        <section class="card-c panel rise" style="--i:7" id="security" aria-labelledby="h-sec">
+          <div class="ch"><h2 id="h-sec">Безопасность</h2></div>
+          <ul class="list">
+            <li><span class="grow"><b>Пароль</b><small>Изменён 3 месяца назад</small></span><button type="button" class="btn btn-ghost btn-sm" data-open="pw-dlg">Сменить</button></li>
+            <li><label class="grow" for="tfa"><b>Двухфакторная защита</b><small>Код из приложения при входе</small></label><input class="switch-t" id="tfa" type="checkbox" data-toast="2FA включена" data-toast-off="2FA выключена"></li>
+          </ul>
+          <h2 style="margin:1.25rem 0 .5rem;font-size:.9375rem">Сессии</h2>
+          <ul class="list">
+            <li><span class="grow"><b>Chrome · Windows</b><small>Москва · сейчас</small></span><span class="pill pill-ok">это устройство</span></li>
+            <li><span class="grow"><b>KOVA Launcher</b><small>Москва · 2 ч назад</small></span><button type="button" class="btn btn-ghost btn-sm" data-end>Завершить</button></li>
+            <li><span class="grow"><b>Safari · iPhone</b><small>Казань · 4 дня назад</small></span><button type="button" class="btn btn-ghost btn-sm" data-end>Завершить</button></li>
+          </ul>
+        </section>
+
+        <section class="card-c panel rise" style="--i:8" id="notify" aria-labelledby="h-not">
+          <div class="ch"><h2 id="h-not">Уведомления</h2></div>
+          <ul class="list">
+            <li><label class="grow" for="n1"><b>Новости сети</b><small>Раз в неделю, на email</small></label><input class="switch-t" id="n1" type="checkbox" checked></li>
+            <li><label class="grow" for="n2"><b>Вайпы и рестарты</b><small>В Discord</small></label><input class="switch-t" id="n2" type="checkbox" checked></li>
+            <li><label class="grow" for="n3"><b>Запуск RPG</b><small>Email и Discord</small></label><input class="switch-t" id="n3" type="checkbox"></li>
+          </ul>
+          <button type="button" class="btn btn-danger btn-block" style="margin-top:1rem" data-logout>Выйти из аккаунта</button>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>
+
+<dialog class="dlg" id="pw-dlg" aria-labelledby="pw-dlg-t" closedby="any">
+  <h2 id="pw-dlg-t">Смена пароля</h2>
+  <p class="hint" style="margin-bottom:1rem">После смены вы выйдете на других устройствах.</p>
+  <form class="stack" method="dialog" id="pw-form" novalidate>
+    <input type="text" name="username" autocomplete="username" hidden data-user>
+    <div class="field"><label for="cur-pw">Текущий пароль</label><div class="pw"><input class="inp" id="cur-pw" type="password" autocomplete="current-password" required data-error="cur-err"><button type="button" class="reveal-pw" aria-pressed="false" aria-label="Показать пароль"><span class="eye" aria-hidden="true"></span></button></div><p class="err" id="cur-err">Введите текущий пароль</p></div>
+    <div class="field"><label for="new-pw">Новый пароль</label><p class="hint" id="np-hint">8+ символов, буква и цифра</p><div class="pw"><input class="inp" id="new-pw" type="password" autocomplete="new-password" required minlength="8" pattern="(?=.*[A-Za-zА-Яа-яЁё])(?=.*\d).{8,}" aria-describedby="np-hint" data-error="np-err"><button type="button" class="reveal-pw" aria-pressed="false" aria-label="Показать пароль"><span class="eye" aria-hidden="true"></span></button></div><p class="err" id="np-err">Пароль не соответствует требованиям</p></div>
+    <div class="dlg-actions"><button type="button" class="btn btn-ghost" data-close>Отмена</button><button type="submit" class="btn btn-sun themed"><span class="lbl">Сохранить</span></button></div>
+  </form>
+</dialog>
+<input type="file" accept="image/png" hidden data-skin-file>
+<p class="toast" role="status" hidden></p>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-cols">
+      <div><p class="brand"><span class="brand-mark" aria-hidden="true"></span><span translate="no">KOVA</span></p><p class="muted small">Сеть серверов. Не связано с Mojang и Microsoft.</p></div>
+      <nav aria-label="Сервера"><p class="fh">Сервера</p><a href="../#servers">TerraFirmaGreg</a><a href="../#servers">RPG · скоро</a><a href="../launcher/">Лаунчер</a></nav>
+      <nav aria-label="Аккаунт"><p class="fh">Аккаунт</p><a href="../login/">Вход</a><a href="../register/">Регистрация</a><a href="../cabinet/">Кабинет</a></nav>
+      <nav aria-label="Сообщество"><p class="fh">Сообщество</p><a href="#">Discord</a><a href="#">Правила</a><a href="#">Поддержка</a></nav>
+    </div>
+    <p class="foot-mark" translate="no" aria-hidden="true">KOVA</p>
+    <p class="foot-copy muted small">© 2026 KOVA</p>
+  </div>
+</footer>
+<script type="module" src="../cabinet.js?v=9"></script>
+</body>
+</html>

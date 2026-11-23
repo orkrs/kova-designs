@@ -417,3 +417,27 @@ h2 { margin: 0; font: 800 clamp(2.25rem, 1.4rem + 3.2vw, 4rem)/1 var(--display);
     @keyframes net-in { from { opacity: 0; translate: 0 20px; } }
   }
 }
+
+/* ---------- shared header bits (all pages) ---------- */
+@media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
+.nav .brand { view-transition-name: brand; }
+.nav-end { view-transition-name: nav-end; }
+.nav nav a[aria-current="page"] { opacity: 1; }
+.nav nav a[aria-current="page"]::after { scale: 1 1; }
+.world-btn { position: relative; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 12px; cursor: pointer;
+  background: var(--glass); box-shadow: inset 0 0 0 1px var(--glass-line); backdrop-filter: blur(10px); transition: background-color .2s; }
+.world-btn:hover { background: rgb(255 255 255 / .14); }
+.wb-sun, .wb-moon { grid-area: 1 / 1; width: 18px; height: 18px; clip-path: polygon(30% 0, 70% 0, 70% 10%, 90% 10%, 90% 30%, 100% 30%, 100% 70%, 90% 70%, 90% 90%, 70% 90%, 70% 100%, 30% 100%, 30% 90%, 10% 90%, 10% 70%, 0 70%, 0 30%, 10% 30%, 10% 10%, 30% 10%);
+  transition: opacity .5s var(--ease), scale .6s var(--spring, var(--ease)), rotate .6s var(--ease); }
+.wb-sun { background: var(--sun); }
+.wb-moon { background: #e9ecff; box-shadow: inset -4px -3px 0 #b9bff0; opacity: 0; scale: .6; rotate: -40deg; }
+[data-server="rpg"] .wb-sun { opacity: 0; scale: .6; rotate: 40deg; }
+[data-server="rpg"] .wb-moon { opacity: 1; scale: 1; rotate: 0deg; }
+.auth-link.auth-on { display: inline-flex; align-items: center; gap: .55rem; min-block-size: 44px; padding: .3rem .85rem .3rem .3rem; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: .875rem;
+  background: var(--glass); box-shadow: inset 0 0 0 1px var(--glass-line); backdrop-filter: blur(10px); transition: background-color .2s; }
+.auth-link.auth-on:hover { background: rgb(255 255 255 / .14); }
+.auth-on .av { width: 32px; height: 32px; image-rendering: pixelated; border-radius: 6px; }
+.auth-on .auth-cab { display: none; }
+.auth-nick { max-inline-size: 12ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 560px) { .auth-nick { display: none; } .auth-link.auth-on { padding-inline-end: .3rem; } }
+[data-server="rpg"] .nav nav a::after { background: var(--arcane); }

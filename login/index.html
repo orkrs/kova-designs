@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru" data-server="tfg" data-page="login">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Вход — KOVA</title>
+<meta name="description" content="Вход в аккаунт KOVA через Discord или email.">
+<meta name="theme-color" content="#2a1f45">
+<script>try{var w=localStorage.getItem("kova.world");if(w==="rpg"){document.documentElement.dataset.server="rpg"}}catch(e){}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 2 2%22 shape-rendering=%22crispEdges%22%3E%3Crect width=%221%22 height=%221%22 fill=%22%23ffcf7a%22/%3E%3Crect x=%221%22 width=%221%22 height=%221%22 fill=%22%23ff7fa6%22/%3E%3Crect y=%221%22 width=%221%22 height=%221%22 fill=%22%23fff%22/%3E%3Crect x=%221%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23ff9b6b%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=9"><link rel="stylesheet" href="../pages.css?v=9">
+<link rel="expect" href="#main" blocking="render">
+</head><body>
+<a class="skip" href="#main">К содержимому</a>
+<header class="nav">
+  <a class="brand" href="../" aria-label="KOVA — на главную"><span class="brand-mark" aria-hidden="true"></span><span translate="no">KOVA</span></a>
+  <nav aria-label="Основное">
+    <a href="../#servers">Сервера</a><a href="../#road">Дорожная карта</a><a href="../launcher/">Лаунчер</a><a href="../#news">Новости</a>
+  </nav>
+  <div class="nav-end">
+    <span class="net-pill"><span class="live" aria-hidden="true"></span><b>128</b>&nbsp;в сети</span>
+    <button type="button" class="world-btn" aria-pressed="false" aria-label="Тема: закат TFG. Переключить на ночь RPG"><span class="wb-sun" aria-hidden="true"></span><span class="wb-moon" aria-hidden="true"></span></button>
+    <a class="btn btn-ghost auth-link" href="../login/" data-auth>Войти</a>
+  </div>
+</header>
+<main id="main" class="page">
+  <div class="psky" aria-hidden="true"><div class="stars-bg"></div></div>
+  <div class="auth">
+    <div class="auth-art rise" style="--i:0" aria-hidden="true">
+      <div class="psky"><div class="stars-bg"></div></div>
+      <div class="orb sun"></div><div class="orb moon"></div>
+      <div class="isle-slot scene"><canvas class="isle" data-world="tfg" data-scene="industrial"></canvas><canvas class="isle" data-world="rpg" data-scene="arcane"></canvas></div>
+      <div class="art-copy"><p>Один аккаунт — все миры KOVA.</p><small>TerraFirmaGreg уже онлайн · RPG скоро</small></div>
+    </div>
+    <div class="auth-card panel rise" style="--i:1">
+      <nav class="auth-tabs" aria-label="Вход или регистрация"><a href="../login/" aria-current="page">Вход</a><a href="../register/">Регистрация</a></nav>
+      <div class="auth-panel" data-panel="login">
+        <h1>С возвращением</h1>
+        <p class="sub">Войдите, чтобы играть и управлять аккаунтом.</p>
+        <div class="stack">
+          <button type="button" class="btn btn-discord btn-block" data-discord><span class="dc-logo" aria-hidden="true"></span><span class="lbl">Войти через Discord</span></button>
+          <p class="or">или по email</p>
+          <form class="stack" id="login-form" novalidate>
+            <div class="field">
+              <label for="email">Email</label>
+              <input class="inp" id="email" name="email" type="email" autocomplete="username" spellcheck="false" required enterkeyhint="next" placeholder="you@mail.ru" data-error="email-err">
+              <p class="err" id="email-err">Введите email в формате you@mail.ru</p>
+            </div>
+            <div class="field">
+              <div class="lbl-row"><label for="current-password">Пароль</label><button type="button" class="linkbtn" data-go="forgot">Забыли пароль?</button></div>
+              <div class="pw"><input class="inp" id="current-password" name="password" type="password" autocomplete="current-password" required minlength="8" enterkeyhint="done" data-error="pw-err"><button type="button" class="reveal-pw" aria-pressed="false" aria-label="Показать пароль"><span class="eye" aria-hidden="true"></span></button></div>
+              <p class="err" id="pw-err">Минимум 8 символов</p>
+            </div>
+            <label class="check"><input type="checkbox" name="remember" checked> Запомнить меня</label>
+            <button class="btn btn-sun themed btn-block" type="submit"><span class="lbl">Войти</span></button>
+          </form>
+        </div>
+        <p class="auth-alt">Нет аккаунта? <a href="../register/">Зарегистрироваться</a></p>
+      </div>
+
+      <div class="auth-panel" data-panel="forgot" hidden>
+        <h1>Восстановление</h1>
+        <p class="sub">Пришлём ссылку для сброса пароля.</p>
+        <form class="stack" id="forgot-form" novalidate>
+          <div class="field">
+            <label for="reset-email">Email аккаунта</label>
+            <input class="inp" id="reset-email" name="email" type="email" autocomplete="username" spellcheck="false" required enterkeyhint="send" placeholder="you@mail.ru" data-error="reset-err">
+            <p class="err" id="reset-err">Введите email в формате you@mail.ru</p>
+          </div>
+          <button class="btn btn-sun themed btn-block" type="submit"><span class="lbl">Отправить ссылку</span></button>
+          <button type="button" class="btn btn-ghost btn-block" data-go="login">Назад ко входу</button>
+        </form>
+      </div>
+
+      <div class="auth-panel" data-panel="sent" hidden>
+        <div class="state-ico" aria-hidden="true"><span class="mail-px"></span></div>
+        <h1>Проверьте почту</h1>
+        <p class="sub">Ссылка отправлена на <span class="sent-to" translate="no"></span>. Она действует 30 минут.</p>
+        <div class="stack">
+          <button type="button" class="btn btn-ghost btn-block" data-resend><span class="lbl">Отправить ещё раз</span></button>
+          <button type="button" class="btn btn-sun themed btn-block" data-go="login">Ко входу</button>
+        </div>
+        <p class="hint" role="status" aria-live="polite" data-resend-status></p>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-cols">
+      <div><p class="brand"><span class="brand-mark" aria-hidden="true"></span><span translate="no">KOVA</span></p><p class="muted small">Сеть серверов. Не связано с Mojang и Microsoft.</p></div>
+      <nav aria-label="Сервера"><p class="fh">Сервера</p><a href="../#servers">TerraFirmaGreg</a><a href="../#servers">RPG · скоро</a><a href="../launcher/">Лаунчер</a></nav>
+      <nav aria-label="Аккаунт"><p class="fh">Аккаунт</p><a href="../login/">Вход</a><a href="../register/">Регистрация</a><a href="../cabinet/">Кабинет</a></nav>
+      <nav aria-label="Сообщество"><p class="fh">Сообщество</p><a href="#">Discord</a><a href="#">Правила</a><a href="#">Поддержка</a></nav>
+    </div>
+    <p class="foot-mark" translate="no" aria-hidden="true">KOVA</p>
+    <p class="foot-copy muted small">© 2026 KOVA</p>
+  </div>
+</footer>
+<script type="module" src="../auth.js?v=9"></script>
+</body>
+</html>

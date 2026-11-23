@@ -1,117 +1,213 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-server="tfg" data-page="home">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>KOVA — дизайн-концепции сайта</title>
-<meta name="description" content="Четыре направления дизайна сайта для сети серверов KOVA.">
-<meta name="theme-color" content="#0d0c0b">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 2 2%22 shape-rendering=%22crispEdges%22%3E%3Crect width=%221%22 height=%221%22 fill=%22%23ffcf7a%22/%3E%3Crect x=%221%22 width=%221%22 height=%221%22 fill=%22%23ff5a36%22/%3E%3Crect y=%221%22 width=%221%22 height=%221%22 fill=%22%23ff8a2b%22/%3E%3Crect x=%221%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23fff%22/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="present.css">
+<title>KOVA — сеть серверов</title>
+<meta name="description" content="KOVA — сеть Minecraft-серверов. Первый — TerraFirmaGreg, следующий — RPG.">
+<meta name="theme-color" content="#2a1f45">
+<script>try{var w=localStorage.getItem("kova.world");if(w==="rpg"){document.documentElement.dataset.server="rpg"}}catch(e){}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 2 2%22 shape-rendering=%22crispEdges%22%3E%3Crect width=%221%22 height=%221%22 fill=%22%23ffcf7a%22/%3E%3Crect x=%221%22 width=%221%22 height=%221%22 fill=%22%23ff7fa6%22/%3E%3Crect y=%221%22 width=%221%22 height=%221%22 fill=%22%23fff%22/%3E%3Crect x=%221%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23ff9b6b%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=9">
+<link rel="expect" href="#main" blocking="render">
 </head>
 <body>
-<a class="skip" href="#main">К вариантам</a>
-<header class="top">
-  <p class="brand" translate="no"><span class="px" aria-hidden="true"><i></i><i></i><i></i><i></i></span>KOVA</p>
-  <p class="meta">Дизайн-концепции · ноябрь 2026</p>
+<a class="skip" href="#main">К содержимому</a>
+<header class="nav">
+  <a class="brand" href="./" aria-label="KOVA — на главную"><span class="brand-mark" aria-hidden="true"></span><span translate="no">KOVA</span></a>
+  <nav aria-label="Основное">
+    <a href="#servers">Сервера</a><a href="#road">Дорожная карта</a><a href="launcher/">Лаунчер</a><a href="#news">Новости</a>
+  </nav>
+  <div class="nav-end">
+    <span class="net-pill"><span class="live" aria-hidden="true"></span><b>128</b>&nbsp;в сети</span>
+    <button type="button" class="world-btn" aria-pressed="false" aria-label="Тема: закат TFG. Переключить на ночь RPG"><span class="wb-sun" aria-hidden="true"></span><span class="wb-moon" aria-hidden="true"></span></button>
+    <a class="btn btn-ghost auth-link" href="login/" data-auth>Войти</a>
+  </div>
 </header>
+
 <main id="main">
-  <section class="intro" aria-labelledby="t">
-    <div class="intro-text">
-    <div class="band" aria-hidden="true"><i style="--c:#2a1f45;--i:0"></i><i style="--c:#b45a86;--i:1"></i><i style="--c:#ff7fa6;--i:2"></i><i style="--c:#ffcf7a;--i:3"></i><i style="--c:#7fbf5a;--i:4"></i><i style="--c:#f2ece2;--i:5"></i><i style="--c:#ff5a36;--i:6"></i><i style="--c:#2f4bff;--i:7"></i><i style="--c:#c6f432;--i:8"></i><i style="--c:#ffc21a;--i:9"></i><i style="--c:#ffe08a;--i:10"></i><i style="--c:#ffa63d;--i:11"></i><i style="--c:#f26a1f;--i:12"></i><i style="--c:#d9481a;--i:13"></i><i style="--c:#b02e16;--i:14"></i><i style="--c:#000;--i:15"></i><i style="--c:#2f3336;--i:16"></i><i style="--c:#e7e9ea;--i:17"></i><i style="--c:#ff6a3d;--i:18"></i><i style="--c:#9f7bff;--i:19"></i></div>
-    <h1 id="t">Четыре лица <span translate="no">KOVA</span></h1>
-    <p>Четыре разных направления лендинга для сети серверов и первого сервера на TerraFirmaGreg. Тексты — заглушки, смотрим на форму. Всё нарисовано кодом: воксели, пиксели, пласты.</p>
-    <a class="pick" href="v1/"><span class="pick-tag">Выбран · доработан</span><span><b>01 Закат</b> — сеть серверов: TFG + RPG</span><span aria-hidden="true">→</span></a>
-    <ol class="toc">
-      <li><a href="#v1"><span>01</span>Закат</a></li>
-      <li><a href="#v2"><span>02</span>Мастерская</a></li>
-      <li><a href="#v3"><span>03</span>Пласты</a></li>
-      <li><a href="#v4"><span>04</span>Сигнал</a></li>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="sky" aria-hidden="true">
+    <div class="sky-layer sky-tfg"></div>
+    <div class="sky-layer sky-rpg"><div class="stars"></div><div class="stars stars-2"></div></div>
+  </div>
+  <div class="scene" aria-hidden="true">
+    <div class="px-layer" data-depth="0.25"><div class="sun"></div><div class="moon"></div></div>
+    <div class="px-layer clouds" data-depth="0.12"></div>
+    <div class="px-layer" data-depth="0.55">
+      <div class="slot slot-a"><canvas class="isle" data-world="tfg" data-scene="mine"></canvas><canvas class="isle" data-world="rpg" data-scene="shard"></canvas></div>
+      <div class="slot slot-b"><canvas class="isle" data-world="tfg" data-scene="house"></canvas><canvas class="isle" data-world="rpg" data-scene="shard"></canvas></div>
+    </div>
+    <div class="px-layer" data-depth="1">
+      <div class="slot slot-main"><canvas class="isle" data-world="tfg" data-scene="industrial"></canvas><canvas class="isle" data-world="rpg" data-scene="arcane"></canvas></div>
+    </div>
+  </div>
+  <canvas class="haze" aria-hidden="true"></canvas>
+
+  <div class="hero-ui">
+    <div class="hero-copy">
+      <p class="eyebrow in" style="--i:0"><span class="dot" aria-hidden="true"></span>Сеть серверов · сезон 01</p>
+      <h1 id="hero-title" translate="no" aria-label="KOVA"><span class="ltr" aria-hidden="true" style="--i:0">K</span><span class="ltr" aria-hidden="true" style="--i:1">O</span><span class="ltr" aria-hidden="true" style="--i:2">V</span><span class="ltr" aria-hidden="true" style="--i:3">A</span></h1>
+      <p class="lede in" style="--i:1">Несколько миров — один аккаунт. Начинаем с TerraFirmaGreg, следом — RPG.</p>
+
+      <fieldset class="switch in" style="--i:2" aria-label="Выбор сервера">
+        <legend class="sr">Сервер</legend>
+        <label><input type="radio" name="srv" value="tfg" checked><span class="sw-ico sw-tfg" aria-hidden="true"></span><span class="sw-txt"><b>TFG</b><small>онлайн</small></span></label>
+        <label><input type="radio" name="srv" value="rpg"><span class="sw-ico sw-rpg" aria-hidden="true"></span><span class="sw-txt"><b>RPG</b><small>скоро</small></span></label>
+      </fieldset>
+
+      <div class="cta-wrap in" style="--i:3">
+        <div class="cta-row swap" data-for="tfg">
+          <div class="ip">
+            <span class="ip-label">IP</span>
+            <code id="ip-hero" translate="no">tfg.kova.gg</code>
+            <span class="copy">
+              <button type="button" class="btn btn-sun" command="--copy" commandfor="ip-hero" aria-label="Скопировать IP сервера TFG">Скопировать</button>
+              <span class="tip" role="status"></span>
+            </span>
+          </div>
+          <a class="btn btn-ghost" href="#">Discord</a>
+        </div>
+        <div class="cta-row swap" data-for="rpg" hidden>
+          <button type="button" class="btn btn-arcane notify" aria-pressed="false"><span class="bell" aria-hidden="true"></span><span class="lbl">Сообщить о запуске</span></button>
+          <a class="btn btn-ghost" href="#">Discord</a>
+        </div>
+      </div>
+    </div>
+
+    <aside class="hero-card in" style="--i:4" aria-live="polite" aria-label="Статус сервера">
+      <div class="swap" data-for="tfg">
+        <div class="hc-row"><span class="live" aria-hidden="true"></span><b>TerraFirmaGreg</b><span class="muted">1.20.1</span></div>
+        <div class="hc-num"><span>128</span><small>/ 300 онлайн</small></div>
+        <div class="hc-bar" aria-hidden="true"><i style="--v:.43"></i></div>
+      </div>
+      <div class="swap" data-for="rpg" hidden>
+        <div class="hc-row"><span class="lock" aria-hidden="true"></span><b>RPG</b><span class="muted">сборка в разработке</span></div>
+        <div class="hc-num hc-soon"><span>Скоро</span><small>2027</small></div>
+        <div class="hc-bar hc-bar-rpg" aria-hidden="true"><i style="--v:.38"></i></div>
+      </div>
+    </aside>
+  </div>
+  <button type="button" class="motion-toggle in" style="--i:5" data-label-pause="Остановить анимацию" data-label-play="Запустить анимацию" aria-label="Остановить анимацию"><span class="mt-ico" aria-hidden="true"></span></button>
+  <a class="scroll-hint" href="#network" aria-label="Листать вниз"><span aria-hidden="true"></span></a>
+</section>
+
+<section id="network" class="network" aria-label="Состояние сети">
+  <dl class="wrap net-grid">
+    <div><dt>Онлайн в сети</dt><dd><span class="live" aria-hidden="true"></span>128</dd></div>
+    <div><dt>Сервера</dt><dd>1<span class="of">/2</span></dd></div>
+    <div><dt>Аптайм</dt><dd>99.9%</dd></div>
+    <div><dt>Аккаунт</dt><dd>Один на всё</dd></div>
+  </dl>
+</section>
+
+<section id="servers" class="servers" aria-labelledby="servers-title">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="kicker">01 — Миры</p><h2 id="servers-title">Сервера сети</h2></div>
+    <div class="srv-grid">
+      <article class="srv srv-tfg reveal" aria-labelledby="s-tfg">
+        <div class="srv-art"><canvas class="mini" data-kind="tfg"></canvas><span class="badge badge-live"><span class="live" aria-hidden="true"></span>Онлайн</span></div>
+        <div class="srv-body">
+          <div class="srv-top"><h3 id="s-tfg">TerraFirmaGreg</h3><span class="srv-num"><b>128</b>/300</span></div>
+          <ul class="chips" aria-label="Параметры"><li>1.20.1</li><li>Выживание</li><li>Геология</li><li>GregTech</li></ul>
+          <ol class="tiers" aria-label="Уровни прогресса">
+            <li style="--t:#9a9a9a">ULV</li><li style="--t:#e6e6e6">LV</li><li style="--t:#ff9b4a">MV</li><li style="--t:#ffd23f">HV</li><li style="--t:#b58cff">EV</li>
+          </ol>
+          <div class="srv-actions">
+            <span class="copy"><button type="button" class="btn btn-sun" command="--copy" commandfor="ip-hero" aria-label="Скопировать IP сервера TFG">tfg.kova.gg</button><span class="tip" role="status"></span></span>
+            <a class="link" href="#">Подробнее →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="srv srv-rpg reveal" aria-labelledby="s-rpg">
+        <div class="srv-art"><canvas class="mini" data-kind="rpg"></canvas><span class="badge badge-soon"><span class="lock" aria-hidden="true"></span>Скоро</span></div>
+        <div class="srv-body">
+          <div class="srv-top"><h3 id="s-rpg">RPG</h3><span class="srv-num">2027</span></div>
+          <ul class="chips" aria-label="Параметры"><li>Классы</li><li>Подземелья</li><li>Магия</li><li class="redacted" aria-label="Сборка пока секрет">█████</li></ul>
+          <div class="ready"><span>Готовность</span><b>38%</b></div>
+          <div class="ready-bar" aria-hidden="true"><i style="--v:.38"></i></div>
+          <div class="srv-actions">
+            <button type="button" class="btn btn-arcane notify" aria-pressed="false"><span class="bell" aria-hidden="true"></span><span class="lbl">Сообщить о запуске</span></button>
+          </div>
+        </div>
+      </article>
+    </div>
+    <a class="srv-next reveal" href="#"><span class="q" aria-hidden="true">?</span><span><b>Сервер 03</b><small>Предложи сборку в Discord</small></span><span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section id="road" class="road" aria-labelledby="road-title">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="kicker">02 — Путь сети</p><h2 id="road-title">Дорожная карта</h2></div>
+    <ol class="track">
+      <li class="done"><span class="node" aria-hidden="true"></span><time>Осень 2026</time><b>Бета-мир</b><span>Lorem ipsum dolor.</span></li>
+      <li class="now"><span class="node" aria-hidden="true"></span><time>Зима 2026</time><b>Запуск TFG</b><span>Сезон 01.</span></li>
+      <li class="next"><span class="node" aria-hidden="true"></span><time>2027</time><b>RPG-сервер</b><span>Sed do eiusmod.</span></li>
+      <li class="far"><span class="node" aria-hidden="true"></span><time>Позже</time><b>Новые миры</b><span>Ut enim ad minim.</span></li>
     </ol>
-    </div>
-    <div class="fan" aria-hidden="true">
-      <img src="assets/v4-desktop.jpg" alt="" width="1440" height="900" style="--r:9deg;--x:20%;--y:-30%">
-      <img src="assets/v3-desktop.jpg" alt="" width="1440" height="900" style="--r:3deg;--x:13%;--y:-12%">
-      <img src="assets/v2-desktop.jpg" alt="" width="1440" height="900" style="--r:-3deg;--x:7%;--y:8%">
-      <img src="assets/v1-desktop.jpg?v=6" alt="" width="1440" height="900" style="--r:-7deg;--x:1%;--y:30%">
-    </div>
-  </section>
+  </div>
+</section>
 
-  <article class="v" id="v1" style="--a:#ffcf7a;--b:#ff7fa6">
-    <div class="v-text">
-      <p class="num">01 <span class="chosen">Выбран · доработан</span></p>
-      <h2>Закат</h2>
-      <p class="concept">Кинематографичный герой: процедурный воксельный остров в розово-персиковом небе. Доработан под сеть: переключатель миров TFG / RPG (закат ↔ ночь с замком и кристаллами), карточки серверов, дорожная карта, лаунчер, Discord.</p>
-      <dl>
-        <div><dt>Шрифты</dt><dd>Unbounded · Manrope</dd></div>
-        <div><dt>Палитра</dt><dd class="sw"><i style="--c:#2a1f45"></i><i style="--c:#b45a86"></i><i style="--c:#ff7fa6"></i><i style="--c:#ffcf7a"></i><i style="--c:#7fbf5a"></i></dd></div>
-        <div><dt>Ход</dt><dd>View Transition между мирами, параллакс, :has()</dd></div>
-      </dl>
-      <a class="open" href="v1/">Открыть вариант <span aria-hidden="true">→</span></a>
+<section id="account" class="account" aria-labelledby="acc-title">
+  <div class="wrap acc-grid">
+    <div class="acc-copy reveal">
+      <p class="kicker">03 — Один вход</p>
+      <h2 id="acc-title">Один аккаунт.<br>Все миры.</h2>
+      <p class="sec-lede">Лаунчер сам ставит нужную сборку и держит её в актуальном состоянии.</p>
+      <div class="cta-row"><a class="btn btn-sun" href="launcher/">Смотреть лаунчер</a><span class="muted small">Windows · macOS · Linux</span></div>
     </div>
-    <a class="v-shot" href="v1/" aria-label="Открыть вариант 01 — Закат" tabindex="-1">
-      <img src="assets/v1-desktop.jpg?v=6" width="1440" height="900" alt="" loading="eager">
-      <img class="ph" src="assets/v1-mobile.jpg?v=6" width="390" height="844" alt="" loading="eager">
-    </a>
-  </article>
+    <div class="launcher reveal" aria-hidden="true">
+      <div class="l-bar"><i></i><i></i><i></i><span>KOVA Launcher</span></div>
+      <div class="l-body">
+        <div class="l-side"><span class="l-av"></span><span class="l-line"></span><span class="l-line s"></span></div>
+        <div class="l-list">
+          <div class="l-item on"><canvas class="l-ico" data-kind="tfg"></canvas><span><b>TerraFirmaGreg</b><small>128 онлайн</small></span><span class="l-play">Играть</span></div>
+          <div class="l-item"><canvas class="l-ico" data-kind="rpg"></canvas><span><b>RPG</b><small>скоро</small></span><span class="l-lock"></span></div>
+          <div class="l-prog"><span>Обновление сборки</span><i><b style="--v:.72"></b></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <article class="v" id="v2" style="--a:#ff5a36;--b:#c6f432">
-    <div class="v-text">
-      <p class="num">02</p>
-      <h2>Мастерская</h2>
-      <p class="concept">Яркий бенто-сетка на тёплой бумаге: цветные плитки, толстые обводки, «нажимаемые» пиксельные кнопки и спрайты руды, кирки и шестерёнки.</p>
-      <dl>
-        <div><dt>Шрифты</dt><dd>Dela Gothic One · Golos Text · Pixelify Sans</dd></div>
-        <div><dt>Палитра</dt><dd class="sw"><i style="--c:#f2ece2"></i><i style="--c:#ff5a36"></i><i style="--c:#2f4bff"></i><i style="--c:#c6f432"></i><i style="--c:#ffc21a"></i><i style="--c:#c9b6ff"></i></dd></div>
-        <div><dt>Ход</dt><dd>Container queries, :has() — соседние плитки гаснут</dd></div>
-      </dl>
-      <a class="open" href="v2/">Открыть вариант <span aria-hidden="true">→</span></a>
+<section id="news" class="news" aria-labelledby="news-title">
+  <div class="wrap">
+    <div class="sec-head row reveal"><div><p class="kicker">04 — Журнал</p><h2 id="news-title">Новости</h2></div><a class="link" href="#">Все записи →</a></div>
+    <div class="cards">
+      <article class="card reveal"><canvas class="thumb" data-seed="21"></canvas><p class="card-meta"><span class="tag tag-tfg">TFG</span><time datetime="2026-11-20">20 ноя</time></p><h3><a href="#">Lorem ipsum dolor sit amet</a></h3></article>
+      <article class="card reveal"><canvas class="thumb" data-seed="5" data-kind="rpg"></canvas><p class="card-meta"><span class="tag tag-rpg">RPG</span><time datetime="2026-11-12">12 ноя</time></p><h3><a href="#">Consectetur adipiscing elit sed</a></h3></article>
+      <article class="card reveal"><canvas class="thumb" data-seed="33"></canvas><p class="card-meta"><span class="tag">Сеть</span><time datetime="2026-11-02">2 ноя</time></p><h3><a href="#">Tempor incididunt ut labore</a></h3></article>
     </div>
-    <a class="v-shot" href="v2/" aria-label="Открыть вариант 02 — Мастерская" tabindex="-1">
-      <img src="assets/v2-desktop.jpg" width="1440" height="900" alt="" loading="eager">
-      <img class="ph" src="assets/v2-mobile.jpg" width="390" height="844" alt="" loading="eager">
-    </a>
-  </article>
+  </div>
+</section>
 
-  <article class="v" id="v3" style="--a:#ff8a2b;--b:#ffe08a">
-    <div class="v-text">
-      <p class="num">03</p>
-      <h2>Пласты</h2>
-      <p class="concept">Тёмная редакционная вёрстка с тонкой сеткой. Логотип собран из блоков-пород, внизу — разрез земли, по которому гуляют крошечные спрайты. Керн с породами, терминал с IP.</p>
-      <dl>
-        <div><dt>Шрифты</dt><dd>Geologica · JetBrains Mono</dd></div>
-        <div><dt>Палитра</dt><dd class="sw"><i style="--c:#0f0e0d"></i><i style="--c:#ffe08a"></i><i style="--c:#ffa63d"></i><i style="--c:#f26a1f"></i><i style="--c:#b02e16"></i></dd></div>
-        <div><dt>Ход</dt><dd>Блоки логотипа падают по очереди</dd></div>
-      </dl>
-      <a class="open" href="v3/">Открыть вариант <span aria-hidden="true">→</span></a>
+<section class="community" aria-labelledby="dc-title">
+  <div class="wrap">
+    <div class="dc reveal">
+      <div class="dc-clouds" aria-hidden="true"></div>
+      <p class="kicker">05 — Сообщество</p>
+      <h2 id="dc-title">4 200 игроков<br>уже в Discord</h2>
+      <a class="btn btn-light" href="#">Вступить в Discord</a>
     </div>
-    <a class="v-shot" href="v3/" aria-label="Открыть вариант 03 — Пласты" tabindex="-1">
-      <img src="assets/v3-desktop.jpg" width="1440" height="900" alt="" loading="eager">
-      <img class="ph" src="assets/v3-mobile.jpg" width="390" height="844" alt="" loading="eager">
-    </a>
-  </article>
-
-  <article class="v" id="v4" style="--a:#ff6a3d;--b:#e7e9ea">
-    <div class="v-text">
-      <p class="num">04</p>
-      <h2>Сигнал</h2>
-      <p class="concept">Сайт как соцсеть: чёрный минимализм в духе X. Профиль сервера, лента постов с уровнями напряжения GregTech, галереей и опросом, справа — живой статус.</p>
-      <dl>
-        <div><dt>Шрифты</dt><dd>Onest · JetBrains Mono</dd></div>
-        <div><dt>Палитра</dt><dd class="sw"><i style="--c:#000"></i><i style="--c:#2f3336"></i><i style="--c:#e7e9ea"></i><i style="--c:#ff6a3d"></i><i style="--c:#ffd23f"></i><i style="--c:#9f7bff"></i></dd></div>
-        <div><dt>Ход</dt><dd>Лайки, подписки, вкладки — живые</dd></div>
-      </dl>
-      <a class="open" href="v4/">Открыть вариант <span aria-hidden="true">→</span></a>
-    </div>
-    <a class="v-shot" href="v4/" aria-label="Открыть вариант 04 — Сигнал" tabindex="-1">
-      <img src="assets/v4-desktop.jpg" width="1440" height="900" alt="" loading="eager">
-      <img class="ph" src="assets/v4-mobile.jpg" width="390" height="844" alt="" loading="eager">
-    </a>
-  </article>
+  </div>
+</section>
 </main>
-<footer class="foot"><p>Не связано с Mojang и Microsoft. Все визуалы сгенерированы кодом.</p><p translate="no">KOVA © 2026</p></footer>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-cols">
+      <div><p class="brand"><span class="brand-mark" aria-hidden="true"></span><span translate="no">KOVA</span></p><p class="muted small">Сеть серверов. Не связано с Mojang и Microsoft.</p></div>
+      <nav aria-label="Сервера"><p class="fh">Сервера</p><a href="#servers">TerraFirmaGreg</a><a href="#servers">RPG · скоро</a><a href="launcher/">Лаунчер</a></nav>
+      <nav aria-label="Аккаунт"><p class="fh">Аккаунт</p><a href="login/">Вход</a><a href="register/">Регистрация</a><a href="cabinet/">Кабинет</a></nav>
+      <nav aria-label="Сообщество"><p class="fh">Сообщество</p><a href="#">Discord</a><a href="#">Правила</a><a href="#">Поддержка</a></nav>
+    </div>
+    <p class="foot-mark" translate="no" aria-hidden="true">KOVA</p>
+    <p class="foot-copy muted small">© 2026 KOVA</p>
+  </div>
+</footer>
+<script type="module" src="main.js?v=9"></script>
+<script type="module" src="copy.js?v=9"></script>
 </body>
 </html>

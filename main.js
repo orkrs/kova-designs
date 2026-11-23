@@ -1,4 +1,5 @@
-import { IslandView, renderStatic, drawCloud } from "./engine.js?v=8";
+import { IslandView, renderStatic, drawCloud } from "./engine.js?v=9";
+import { world } from "./site.js?v=9";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const root = document.documentElement;
@@ -20,7 +21,7 @@ $$(".scene canvas.isle").forEach((c, i) => {
   v.world = c.dataset.world; v.slot = c.parentElement.classList.contains("slot-main") ? 0 : c.parentElement.classList.contains("slot-a") ? 1 : 2;
   worlds[v.world].push(v); heroViews.push(v);
 });
-let current = "tfg";
+let current = world.get();
 
 // ---------- sections: server-card minis (animated), static thumbs ----------
 const cardViews = $$(".mini").map((c) => new IslandView(c, c.dataset.kind === "rpg" ? { scene: "arcane", seed: 29, pal: "arcane", fit: 0.84, padTop: 0.06 } : { scene: "industrial", seed: 11, pal: "dusk", fit: 0.8, padTop: 0.24 }));
@@ -80,11 +81,11 @@ if (motionOK) {
   root.classList.add("intro");
   // drop the intro hooks once it has played so nothing lingers on later sun/moon switches
   setTimeout(() => root.classList.remove("intro"), 3200);
-  const [m, a, b] = [0, 1, 2].map((s) => worlds.tfg.find((v) => v.slot === s));
+  const [m, a, b] = [0, 1, 2].map((s) => worlds[current].find((v) => v.slot === s));
   m.play("in", 1700, 250); a.play("in", 1200, 650); b.play("in", 1100, 850);
   kick();
 } else {
-  worlds.tfg.forEach((v) => { v.prewarm(5); v.show(true); });
+  worlds[current].forEach((v) => { v.prewarm(5); v.show(true); });
   cardViews.forEach((v) => v.prewarm(5));
   drawOnce();
 }
@@ -94,7 +95,7 @@ let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() 
 const ui = $(".hero-ui");
 let vts = [];
 function applyUI(v) {
-  root.dataset.server = v;
+  world.set(v, { silent: true });
   $$("[data-for]").forEach((el) => (el.hidden = el.dataset.for !== v));
   $('meta[name="theme-color"]').content = v === "rpg" ? "#120f2a" : "#2a1f45";
 }
@@ -119,6 +120,9 @@ async function setServer(v) {
   kick();
 }
 $$('input[name="srv"]').forEach((r) => r.addEventListener("change", () => r.checked && setServer(r.value)));
+// header sun/moon toggle drives the same switch
+addEventListener("kova:world", ({ detail: v }) => { const r = $(`input[name="srv"][value="${v}"]`); if (r) r.checked = true; setServer(v); });
+if (current === "rpg") { $('input[name="srv"][value="rpg"]').checked = true; $$("[data-for]").forEach((el) => (el.hidden = el.dataset.for !== "rpg")); }
 
 // ---------- pause control (WCAG 2.2.2) ----------
 const mt = $(".motion-toggle");
