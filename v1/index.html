@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=5">
-<link rel="stylesheet" href="../shared/back.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="../shared/back.css?v=6">
 </head>
 <body>
 <a class="skip" href="#main">К содержимому</a>
@@ -30,59 +30,66 @@
 <section class="hero" aria-labelledby="hero-title">
   <div class="sky" aria-hidden="true">
     <div class="sky-layer sky-tfg"></div>
-    <div class="sky-layer sky-rpg"><div class="stars"></div></div>
-    <div class="sun"></div>
-    <div class="moon"></div>
-    <div class="clouds"></div>
-    <canvas class="isle isle-far isle-a"></canvas>
-    <canvas class="isle isle-far isle-b"></canvas>
-    <div class="isle-stage">
-      <canvas class="isle isle-main isle-tfg"></canvas>
-      <canvas class="isle isle-main isle-rpg"></canvas>
+    <div class="sky-layer sky-rpg"><div class="stars"></div><div class="stars stars-2"></div></div>
+  </div>
+  <div class="scene" aria-hidden="true">
+    <div class="px-layer" data-depth="0.25"><div class="sun"></div><div class="moon"></div></div>
+    <div class="px-layer clouds" data-depth="0.12"></div>
+    <div class="px-layer" data-depth="0.55">
+      <div class="slot slot-a"><canvas class="isle" data-world="tfg" data-scene="mine"></canvas><canvas class="isle" data-world="rpg" data-scene="shard"></canvas></div>
+      <div class="slot slot-b"><canvas class="isle" data-world="tfg" data-scene="house"></canvas><canvas class="isle" data-world="rpg" data-scene="shard"></canvas></div>
+    </div>
+    <div class="px-layer" data-depth="1">
+      <div class="slot slot-main"><canvas class="isle" data-world="tfg" data-scene="industrial"></canvas><canvas class="isle" data-world="rpg" data-scene="arcane"></canvas></div>
     </div>
   </div>
-
   <canvas class="haze" aria-hidden="true"></canvas>
-  <div class="hero-copy">
-    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Сеть серверов · сезон 01</p>
-    <h1 id="hero-title"><span translate="no">KOVA</span></h1>
-    <p class="lede">Несколько миров — один аккаунт. Начинаем с TerraFirmaGreg, следом — RPG.</p>
 
-    <fieldset class="switch" aria-label="Выбор сервера">
-      <legend class="sr">Сервер</legend>
-      <label><input type="radio" name="srv" value="tfg" checked><span class="sw-ico sw-tfg" aria-hidden="true"></span><span class="sw-txt"><b>TFG</b><small>онлайн</small></span></label>
-      <label><input type="radio" name="srv" value="rpg"><span class="sw-ico sw-rpg" aria-hidden="true"></span><span class="sw-txt"><b>RPG</b><small>скоро</small></span></label>
-    </fieldset>
+  <div class="hero-ui">
+    <div class="hero-copy">
+      <p class="eyebrow in" style="--i:0"><span class="dot" aria-hidden="true"></span>Сеть серверов · сезон 01</p>
+      <h1 id="hero-title" translate="no" aria-label="KOVA"><span class="ltr" aria-hidden="true" style="--i:0">K</span><span class="ltr" aria-hidden="true" style="--i:1">O</span><span class="ltr" aria-hidden="true" style="--i:2">V</span><span class="ltr" aria-hidden="true" style="--i:3">A</span></h1>
+      <p class="lede in" style="--i:1">Несколько миров — один аккаунт. Начинаем с TerraFirmaGreg, следом — RPG.</p>
 
-    <div class="cta-row" data-for="tfg">
-      <div class="ip">
-        <span class="ip-label">IP</span>
-        <code id="ip-hero" translate="no">tfg.kova.gg</code>
-        <span class="copy">
-          <button type="button" class="btn btn-sun" command="--copy" commandfor="ip-hero" aria-label="Скопировать IP сервера TFG">Скопировать</button>
-          <span class="tip" role="status"></span>
-        </span>
+      <fieldset class="switch in" style="--i:2" aria-label="Выбор сервера">
+        <legend class="sr">Сервер</legend>
+        <label><input type="radio" name="srv" value="tfg" checked><span class="sw-ico sw-tfg" aria-hidden="true"></span><span class="sw-txt"><b>TFG</b><small>онлайн</small></span></label>
+        <label><input type="radio" name="srv" value="rpg"><span class="sw-ico sw-rpg" aria-hidden="true"></span><span class="sw-txt"><b>RPG</b><small>скоро</small></span></label>
+      </fieldset>
+
+      <div class="cta-wrap in" style="--i:3">
+        <div class="cta-row swap" data-for="tfg">
+          <div class="ip">
+            <span class="ip-label">IP</span>
+            <code id="ip-hero" translate="no">tfg.kova.gg</code>
+            <span class="copy">
+              <button type="button" class="btn btn-sun" command="--copy" commandfor="ip-hero" aria-label="Скопировать IP сервера TFG">Скопировать</button>
+              <span class="tip" role="status"></span>
+            </span>
+          </div>
+          <a class="btn btn-ghost" href="#">Discord</a>
+        </div>
+        <div class="cta-row swap" data-for="rpg" hidden>
+          <button type="button" class="btn btn-arcane notify" aria-pressed="false"><span class="bell" aria-hidden="true"></span><span class="lbl">Сообщить о запуске</span></button>
+          <a class="btn btn-ghost" href="#">Discord</a>
+        </div>
       </div>
-      <a class="btn btn-ghost" href="#">Discord</a>
     </div>
-    <div class="cta-row" data-for="rpg" hidden>
-      <button type="button" class="btn btn-arcane notify" aria-pressed="false"><span class="bell" aria-hidden="true"></span><span class="lbl">Сообщить о запуске</span></button>
-      <a class="btn btn-ghost" href="#">Discord</a>
-    </div>
-  </div>
 
-  <aside class="hero-card" aria-live="polite" aria-label="Статус сервера">
-    <div data-for="tfg">
-      <div class="hc-row"><span class="live" aria-hidden="true"></span><b>TerraFirmaGreg</b><span class="muted">1.20.1</span></div>
-      <div class="hc-num"><span>128</span><small>/ 300 онлайн</small></div>
-      <div class="hc-bar" aria-hidden="true"><i style="--v:.43"></i></div>
-    </div>
-    <div data-for="rpg" hidden>
-      <div class="hc-row"><span class="lock" aria-hidden="true"></span><b>RPG</b><span class="muted">сборка в разработке</span></div>
-      <div class="hc-num hc-soon"><span>Скоро</span><small>2027</small></div>
-      <div class="hc-bar hc-bar-rpg" aria-hidden="true"><i style="--v:.38"></i></div>
-    </div>
-  </aside>
+    <aside class="hero-card in" style="--i:4" aria-live="polite" aria-label="Статус сервера">
+      <div class="swap" data-for="tfg">
+        <div class="hc-row"><span class="live" aria-hidden="true"></span><b>TerraFirmaGreg</b><span class="muted">1.20.1</span></div>
+        <div class="hc-num"><span>128</span><small>/ 300 онлайн</small></div>
+        <div class="hc-bar" aria-hidden="true"><i style="--v:.43"></i></div>
+      </div>
+      <div class="swap" data-for="rpg" hidden>
+        <div class="hc-row"><span class="lock" aria-hidden="true"></span><b>RPG</b><span class="muted">сборка в разработке</span></div>
+        <div class="hc-num hc-soon"><span>Скоро</span><small>2027</small></div>
+        <div class="hc-bar hc-bar-rpg" aria-hidden="true"><i style="--v:.38"></i></div>
+      </div>
+    </aside>
+  </div>
+  <button type="button" class="motion-toggle in" style="--i:5" data-label-pause="Остановить анимацию" data-label-play="Запустить анимацию" aria-label="Остановить анимацию"><span class="mt-ico" aria-hidden="true"></span></button>
   <a class="scroll-hint" href="#network" aria-label="Листать вниз"><span aria-hidden="true"></span></a>
 </section>
 
@@ -201,7 +208,7 @@
   </div>
 </footer>
 <a class="kova-back" href="../">← Все варианты <span>01/04</span></a>
-<script type="module" src="main.js?v=5"></script>
-<script type="module" src="../shared/copy.js?v=5"></script>
+<script type="module" src="main.js?v=6"></script>
+<script type="module" src="../shared/copy.js?v=6"></script>
 </body>
 </html>
