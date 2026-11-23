@@ -1,4 +1,4 @@
-import { drawIsland, drawCloud, PALETTES } from "./voxel.js?v=4";
+import { drawIsland, drawCloud, PALETTES } from "./voxel.js?v=5";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const TFG = { seed: 11, N: 36, peak: 13, trees: 0.035, depth: 18 };

@@ -179,7 +179,7 @@ h1 { margin: 0; font: 900 clamp(4.75rem, 2rem + 10.5vw, 11rem)/.82 var(--display
     .sky { animation: sky-par linear both; animation-timeline: scroll(root); animation-range: 0 100vh; }
     .hero-copy { animation: copy-par linear both; animation-timeline: scroll(root); animation-range: 0 90vh; }
     @keyframes sky-par { to { translate: 0 12vh; } }
-    @keyframes copy-par { to { translate: 0 -8vh; opacity: .25; } }
+    @keyframes copy-par { to { translate: 0 -6vh; } }
   }
 }
 
@@ -371,3 +371,9 @@ h2 { margin: 0; font: 800 clamp(2.25rem, 1.4rem + 3.2vw, 4rem)/1 var(--display);
 .network { position: relative; background: linear-gradient(180deg, var(--night) 0%, var(--night) 100%); }
 
 .net-grid { position: relative; }
+
+/* stacking: sky (-3) < haze (-2) < fade (-1) < all hero UI (2) */
+.sky { z-index: -3; }
+.haze { z-index: -2; }
+.hero::after { z-index: -1; }
+.hero-copy, .hero-card, .scroll-hint { z-index: 2; }
