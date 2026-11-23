@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KOVA — Сигнал · вариант 04</title>
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 5 5%22 shape-rendering=%22crispEdges%22%3E%3Crect width=%225%22 height=%225%22 fill=%22%23000%22/%3E%3Cpath d=%22M1 1h1v3H1zM2 2h1v1H2zM3 1h1v1H3zM3 3h1v1H3z%22 fill=%22%23fff%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../shared/back.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="6.5" rx="1.5"/><rect x="3.5" y="13.5" width="17" height="6.5" rx="1.5"/><path d="M7 7.25h.01M7 16.75h.01"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15zM10 20.5h4"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-reply" viewBox="0 0 24 24"><path d="M4.5 11.5a7.5 7 0 0 1 7.5-7h0a7.5 7 0 0 1 0 14H9l-4 3v-4.2a7 7 0 0 1-.5-5.8z"/></symbol>
+  <symbol id="i-repost" viewBox="0 0 24 24"><path d="M5 9V7.5A2.5 2.5 0 0 1 7.5 5H18l-3-3M19 15v1.5a2.5 2.5 0 0 1-2.5 2.5H6l3 3"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M5 20V12M10 20V6M15 20v-9M20 20V4"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5M5 13v6.5h14V13"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+</svg>
+<a class="skip" href="#main">К ленте</a>
+<div class="app">
+  <aside class="left">
+    <a class="logo" href="#" aria-label="KOVA — на главную"><span class="k" aria-hidden="true"></span></a>
+    <nav aria-label="Основное">
+      <a href="#" aria-current="page"><svg><use href="#i-home"/></svg><span>Главная</span></a>
+      <a href="#"><svg><use href="#i-search"/></svg><span>Обзор</span></a>
+      <a href="#"><svg><use href="#i-server"/></svg><span>Сервера</span></a>
+      <a href="#"><svg><use href="#i-bell"/></svg><span>События</span></a>
+      <a href="#"><svg><use href="#i-book"/></svg><span>Вики</span></a>
+      <a href="#"><svg><use href="#i-chat"/></svg><span>Discord</span></a>
+    </nav>
+    <a class="play" href="#join">Играть</a>
+    <div class="me"><span class="av av-sm" aria-hidden="true"></span><span><b>Гость</b><small>@guest</small></span></div>
+  </aside>
+
+  <main id="main" class="feed">
+    <header class="feed-head">
+      <div class="m-top"><span class="k k-sm" aria-hidden="true"></span><span class="m-title" translate="no">KOVA</span></div>
+      <div class="tabs" role="tablist" aria-label="Ленты">
+        <button role="tab" aria-selected="true" id="tab-a" aria-controls="feed-a">Для вас</button>
+        <button role="tab" aria-selected="false" id="tab-b" aria-controls="feed-a" tabindex="-1">Сервер TFG</button>
+      </div>
+    </header>
+
+    <section class="profile" aria-labelledby="pname">
+      <canvas class="banner" aria-hidden="true"></canvas>
+      <div class="p-row">
+        <span class="av av-lg" aria-hidden="true"></span>
+        <div class="p-actions">
+          <span class="copy">
+            <button type="button" class="pill-ip" command="--copy" commandfor="ip4" aria-label="Скопировать IP сервера"><code id="ip4" translate="no">tfg.kova.gg</code><svg class="ic-copy"><use href="#i-copy"/></svg><svg class="ic-ok"><use href="#i-check"/></svg></button>
+            <span class="tip" role="status"></span>
+          </span>
+          <a class="btn-white" id="join" href="#">Играть</a>
+        </div>
+      </div>
+      <h1 id="pname"><span translate="no">KOVA</span> <span class="badge" aria-label="Официальный аккаунт"></span></h1>
+      <p class="handle">@kova · сеть серверов</p>
+      <p class="bio">Новая сеть Minecraft-серверов. Первый — <b>TerraFirmaGreg</b>: геология, металлургия, путь от камня к току. Lorem ipsum dolor sit amet.</p>
+      <ul class="p-meta"><li><b>128</b> онлайн</li><li><b>4 200</b> в Discord</li><li>Сезон 01 · с ноября 2026</li></ul>
+    </section>
+
+    <div id="feed-a" role="tabpanel" aria-labelledby="tab-a">
+      <article class="post">
+        <span class="av" aria-hidden="true"></span>
+        <div class="body">
+          <p class="who"><b>KOVA</b><span class="badge sm" aria-hidden="true"></span><span class="h">@kova · <time datetime="2026-11-23T10:00">2 ч</time></span></p>
+          <p>Путь на TFG — пять эпох. Каждая открывает новый уровень напряжения.</p>
+          <div class="card tiers" aria-label="Уровни напряжения">
+            <div class="tier" style="--t:#8d8d8d"><b>ULV</b><span>Камень</span></div>
+            <div class="tier" style="--t:#dcdcdc"><b>LV</b><span>Бронза</span></div>
+            <div class="tier" style="--t:#ff8a2b"><b>MV</b><span>Сталь</span></div>
+            <div class="tier" style="--t:#ffd23f"><b>HV</b><span>Алюминий</span></div>
+            <div class="tier" style="--t:#9f7bff"><b>EV</b><span>Титан</span></div>
+          </div>
+          <div class="acts" aria-label="Действия"><button type="button" aria-label="Ответить, 24"><svg><use href="#i-reply"/></svg>24</button><button type="button" aria-label="Репост, 61"><svg><use href="#i-repost"/></svg>61</button><button type="button" class="like" aria-pressed="false" aria-label="Нравится, 412"><svg><use href="#i-heart"/></svg><span>412</span></button><span class="views"><svg aria-hidden="true"><use href="#i-chart"/></svg>18К</span><button type="button" aria-label="Поделиться"><svg><use href="#i-share"/></svg></button></div>
+        </div>
+      </article>
+
+      <article class="post">
+        <span class="av av-b" aria-hidden="true"></span>
+        <div class="body">
+          <p class="who"><b>Пласт</b><span class="h">@plast_builds · <time datetime="2026-11-22">1 д</time></span></p>
+          <p>Lorem ipsum dolor sit amet — первые скриншоты из бета-мира.</p>
+          <div class="card gallery" aria-label="Скриншоты (иллюстрации)">
+            <canvas data-seed="3"></canvas><canvas data-seed="8"></canvas><canvas data-seed="15"></canvas><canvas data-seed="21"></canvas>
+          </div>
+          <div class="acts" aria-label="Действия"><button type="button" aria-label="Ответить, 9"><svg><use href="#i-reply"/></svg>9</button><button type="button" aria-label="Репост, 17"><svg><use href="#i-repost"/></svg>17</button><button type="button" class="like" aria-pressed="false" aria-label="Нравится, 203"><svg><use href="#i-heart"/></svg><span>203</span></button><span class="views"><svg aria-hidden="true"><use href="#i-chart"/></svg>6К</span><button type="button" aria-label="Поделиться"><svg><use href="#i-share"/></svg></button></div>
+        </div>
+      </article>
+
+      <article class="post">
+        <span class="av" aria-hidden="true"></span>
+        <div class="body">
+          <p class="who"><b>KOVA</b><span class="badge sm" aria-hidden="true"></span><span class="h">@kova · <time datetime="2026-11-20">3 д</time></span></p>
+          <p>Какой сервер открыть вторым?</p>
+          <div class="card poll" role="group" aria-label="Опрос">
+            <div class="opt win" style="--p:46%"><span>Create</span><b>46%</b></div>
+            <div class="opt" style="--p:31%"><span>Vanilla+</span><b>31%</b></div>
+            <div class="opt" style="--p:23%"><span>Sky Factory</span><b>23%</b></div>
+            <p class="poll-meta">1 284 голоса · 2 дня до конца</p>
+          </div>
+          <div class="acts" aria-label="Действия"><button type="button" aria-label="Ответить, 112"><svg><use href="#i-reply"/></svg>112</button><button type="button" aria-label="Репост, 40"><svg><use href="#i-repost"/></svg>40</button><button type="button" class="like" aria-pressed="false" aria-label="Нравится, 389"><svg><use href="#i-heart"/></svg><span>389</span></button><span class="views"><svg aria-hidden="true"><use href="#i-chart"/></svg>22К</span><button type="button" aria-label="Поделиться"><svg><use href="#i-share"/></svg></button></div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <aside class="right" aria-label="Боковая панель">
+    <label class="search"><svg aria-hidden="true"><use href="#i-search"/></svg><span class="sr">Поиск</span><input type="search" name="q" placeholder="Поиск по KOVA…" autocomplete="off"></label>
+    <section class="box status" aria-labelledby="st">
+      <h2 id="st">Статус</h2>
+      <div class="srv"><span class="dot" aria-hidden="true"></span><div><b>TFG</b><small>1.20.1 · EU</small></div><span class="num">128<small>/300</small></span></div>
+      <svg class="spark" viewBox="0 0 280 60" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="M0 50 L20 46 L40 48 L60 40 L80 42 L100 34 L120 36 L140 26 L160 30 L180 20 L200 24 L220 14 L240 18 L260 10 L280 12 L280 60 L0 60Z"/><path class="line" d="M0 50 L20 46 L40 48 L60 40 L80 42 L100 34 L120 36 L140 26 L160 30 L180 20 L200 24 L220 14 L240 18 L260 10 L280 12"/></svg>
+      <p class="cap">онлайн за 24 часа</p>
+    </section>
+    <section class="box" aria-labelledby="tr">
+      <h2 id="tr">Актуальное</h2>
+      <a class="trend" href="#"><small>TFG · в тренде</small><b>#первая_бронза</b><small>1 240 постов</small></a>
+      <a class="trend" href="#"><small>Стройка</small><b>Город у реки</b><small>318 постов</small></a>
+      <a class="trend" href="#"><small>Событие</small><b>Ярмарка руды</b><small>96 постов</small></a>
+    </section>
+    <section class="box" aria-labelledby="nx">
+      <h2 id="nx">Скоро в сети</h2>
+      <div class="who-row"><span class="sq" style="--c:#3fcf8e" aria-hidden="true"></span><span><b>Create</b><small>сезон 02</small></span><button type="button" class="follow" aria-pressed="false">Следить</button></div>
+      <div class="who-row"><span class="sq" style="--c:#ffd23f" aria-hidden="true"></span><span><b>Vanilla+</b><small>сезон 02</small></span><button type="button" class="follow" aria-pressed="false">Следить</button></div>
+    </section>
+    <p class="legal">Правила · Приватность · © 2026 KOVA · Не связано с Mojang</p>
+  </aside>
+</div>
+<nav class="tabbar" aria-label="Мобильная навигация">
+  <a href="#" aria-current="page" aria-label="Главная"><svg><use href="#i-home"/></svg></a>
+  <a href="#" aria-label="Обзор"><svg><use href="#i-search"/></svg></a>
+  <a href="#join" class="tb-play">Играть</a>
+  <a href="#" aria-label="События"><svg><use href="#i-bell"/></svg></a>
+  <a href="#" aria-label="Профиль"><svg><use href="#i-user"/></svg></a>
+</nav>
+<a class="kova-back" href="../">← Все варианты <span>04/04</span></a>
+<script type="module" src="main.js"></script>
+<script type="module" src="../shared/copy.js"></script>
+</body>
+</html>

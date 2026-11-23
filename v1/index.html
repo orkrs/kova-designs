@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KOVA — Закат · вариант 01</title>
+<meta name="theme-color" content="#2a1f45">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 2 2%22 shape-rendering=%22crispEdges%22%3E%3Crect width=%221%22 height=%221%22 fill=%22%23ffcf7a%22/%3E%3Crect x=%221%22 width=%221%22 height=%221%22 fill=%22%23ff7fa6%22/%3E%3Crect y=%221%22 width=%221%22 height=%221%22 fill=%22%23fff%22/%3E%3Crect x=%221%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23ff9b6b%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../shared/back.css">
+</head>
+<body>
+<a class="skip" href="#main">К содержимому</a>
+<header class="nav">
+  <a class="brand" href="#" aria-label="KOVA — на главную"><span class="brand-mark" aria-hidden="true"></span><span translate="no">KOVA</span></a>
+  <nav aria-label="Основное">
+    <a href="#server">Сервер</a><a href="#join">Как начать</a><a href="#news">Новости</a><a href="#">Правила</a>
+  </nav>
+  <a class="btn btn-ghost nav-cta" href="#join">Играть</a>
+</header>
+
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="sky" aria-hidden="true">
+    <div class="sun"></div>
+    <div class="clouds"></div>
+    <canvas class="isle isle-far isle-a"></canvas>
+    <canvas class="isle isle-far isle-b"></canvas>
+    <canvas class="isle isle-main"></canvas>
+  </div>
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="dot"></span>Сезон 01 · открытие скоро</p>
+    <h1 id="hero-title"><span translate="no">KOVA</span></h1>
+    <p class="lede">Сеть серверов, где мир строится медленно и надолго. Первый — на сборке TerraFirmaGreg.</p>
+    <div class="cta-row">
+      <div class="ip">
+        <span class="ip-label">IP</span>
+        <code id="ip-hero" translate="no">tfg.kova.gg</code>
+        <span class="copy">
+          <button type="button" class="btn btn-sun" command="--copy" commandfor="ip-hero" aria-label="Скопировать IP сервера">Скопировать</button>
+          <span class="tip" role="status"></span>
+        </span>
+      </div>
+      <a class="btn btn-ghost" href="#">Discord</a>
+    </div>
+  </div>
+  <aside class="hero-card" aria-label="Статус сервера">
+    <div class="hc-row"><span class="live" aria-hidden="true"></span><b>TFG</b><span class="muted">1.20.1</span></div>
+    <div class="hc-num"><span>128</span><small>/ 300 онлайн</small></div>
+    <div class="hc-bar" aria-hidden="true"><i style="--v:.43"></i></div>
+  </aside>
+  <a class="scroll-hint" href="#server" aria-label="Листать вниз"><span aria-hidden="true"></span></a>
+</section>
+
+<section id="server" class="server" aria-labelledby="server-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">01 — Первый сервер</p>
+      <h2 id="server-title">TerraFirmaGreg</h2>
+      <p class="sec-lede">Геология, выживание и долгий путь от камня до стали. Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+    </div>
+    <ol class="ages" aria-label="Эпохи прогресса">
+      <li class="age reveal"><span class="age-ico" data-sprite="ore"></span><b>Камень</b><span>Lorem ipsum dolor sit amet.</span></li>
+      <li class="age reveal"><span class="age-ico" data-sprite="pick"></span><b>Медь и бронза</b><span>Consectetur adipiscing elit.</span></li>
+      <li class="age reveal"><span class="age-ico" data-sprite="gear"></span><b>Сталь</b><span>Sed do eiusmod tempor.</span></li>
+      <li class="age reveal"><span class="age-ico" data-sprite="bolt"></span><b>Электричество</b><span>Ut enim ad minim veniam.</span></li>
+    </ol>
+    <dl class="facts reveal">
+      <div><dt>Версия</dt><dd>1.20.1</dd></div>
+      <div><dt>Режим</dt><dd>Выживание</dd></div>
+      <div><dt>Мир</dt><dd>16 000²</dd></div>
+      <div><dt>Вайп</dt><dd>Нет</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="join" class="join" aria-labelledby="join-title">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="kicker">02 — Как начать</p><h2 id="join-title">Три шага до мира</h2></div>
+    <ol class="steps">
+      <li class="step reveal"><span class="step-n">1</span><h3>Скачай сборку</h3><p>Lorem ipsum dolor sit amet, consectetur.</p><a class="link" href="#">Лаунчер →</a></li>
+      <li class="step reveal"><span class="step-n">2</span><h3>Заходи по IP</h3><p>Ut enim ad minim veniam, quis nostrud.</p>
+        <div class="ip ip-sm"><code id="ip-step" translate="no">tfg.kova.gg</code><span class="copy"><button type="button" class="btn btn-sun btn-sm" command="--copy" commandfor="ip-step" aria-label="Скопировать IP сервера">Копировать</button><span class="tip" role="status"></span></span></div></li>
+      <li class="step reveal"><span class="step-n">3</span><h3>Найди своих</h3><p>Duis aute irure dolor in reprehenderit.</p><a class="link" href="#">Discord →</a></li>
+    </ol>
+  </div>
+</section>
+
+<section id="news" class="news" aria-labelledby="news-title">
+  <div class="wrap">
+    <div class="sec-head row reveal"><div><p class="kicker">03 — Журнал</p><h2 id="news-title">Новости</h2></div><a class="link" href="#">Все записи →</a></div>
+    <div class="cards">
+      <article class="card reveal"><canvas class="thumb" data-seed="21"></canvas><time datetime="2026-11-20">20 ноя</time><h3><a href="#">Lorem ipsum dolor sit amet</a></h3></article>
+      <article class="card reveal"><canvas class="thumb" data-seed="5"></canvas><time datetime="2026-11-12">12 ноя</time><h3><a href="#">Consectetur adipiscing elit sed</a></h3></article>
+      <article class="card reveal"><canvas class="thumb" data-seed="33"></canvas><time datetime="2026-11-02">2 ноя</time><h3><a href="#">Tempor incididunt ut labore</a></h3></article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p class="foot-mark" translate="no" aria-hidden="true">KOVA</p>
+    <div class="foot-row">
+      <span>© 2026 KOVA. Не связано с Mojang.</span>
+      <nav aria-label="Подвал"><a href="#">Discord</a><a href="#">Telegram</a><a href="#">Правила</a></nav>
+    </div>
+  </div>
+</footer>
+<a class="kova-back" href="../">← Все варианты <span>01/04</span></a>
+<script type="module" src="main.js"></script>
+<script type="module" src="../shared/copy.js"></script>
+<script type="module" src="../shared/sprites.js"></script>
+</body>
+</html>
