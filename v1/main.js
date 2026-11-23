@@ -1,4 +1,4 @@
-import { IslandView, renderStatic, drawCloud } from "./engine.js?v=7";
+import { IslandView, renderStatic, drawCloud } from "./engine.js?v=8";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const root = document.documentElement;
@@ -78,6 +78,8 @@ function layoutAll() { heroViews.forEach((v) => v.layout()); cardViews.forEach((
 layoutAll(); statics();
 if (motionOK) {
   root.classList.add("intro");
+  // drop the intro hooks once it has played so nothing lingers on later sun/moon switches
+  setTimeout(() => root.classList.remove("intro"), 3200);
   const [m, a, b] = [0, 1, 2].map((s) => worlds.tfg.find((v) => v.slot === s));
   m.play("in", 1700, 250); a.play("in", 1200, 650); b.play("in", 1100, 850);
   kick();
@@ -90,6 +92,7 @@ let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() 
 
 // ---------- world switch: islands dissolve → new world assembles; UI via scoped View Transition ----------
 const ui = $(".hero-ui");
+let vts = [];
 function applyUI(v) {
   root.dataset.server = v;
   $$("[data-for]").forEach((el) => (el.hidden = el.dataset.for !== v));
@@ -98,7 +101,15 @@ function applyUI(v) {
 async function setServer(v) {
   if (v === current) return;
   const from = worlds[current], to = worlds[v]; current = v;
-  if (motionOK && ui.startViewTransition) { const t = ui.startViewTransition(() => applyUI(v)); t.ready.catch(() => {}); }
+  // interruptible: finish any running UI transition instantly, then start the new one;
+  // scoped transitions only on the card + CTA, so the switch itself stays clickable mid-transition
+  vts.forEach((t) => { try { t.skipTransition(); } catch {} }); vts = [];
+  if (motionOK && ui.startViewTransition) {
+    const scopes = [$(".cta-wrap"), $(".hero-card")].filter((el) => el.offsetParent);
+    vts = scopes.map((el, i) => el.startViewTransition(() => applyUI(v)));
+    if (!vts.length) applyUI(v);
+    vts.forEach((t) => t.ready.catch(() => {}));
+  }
   else applyUI(v); // @starting-style handles the entry fallback
   if (!motionOK || userPaused) {
     from.forEach((x) => x.show(false)); to.forEach((x) => { x.prewarm(4); x.show(true); }); drawOnce(); return;

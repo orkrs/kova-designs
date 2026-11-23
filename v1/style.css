@@ -151,7 +151,7 @@ h1 { display: flex; margin: 0; font: 900 clamp(4.75rem, 2rem + 9.5vw, 10.5rem)/.
   background: var(--glass); box-shadow: inset 0 0 0 1px var(--glass-line); backdrop-filter: blur(12px); }
 .ip-label { font: 600 .6875rem/1 var(--display); letter-spacing: .12em; opacity: .6; }
 .ip code { font: 600 1.0625rem/1 ui-monospace, "SFMono-Regular", Menlo, monospace; letter-spacing: .02em; }
-.hero-card { position: relative; flex: none; inline-size: 260px; padding: 1rem 1.125rem; border-radius: 18px; background: var(--glass); box-shadow: inset 0 0 0 1px var(--glass-line); backdrop-filter: blur(14px); view-transition-name: hero-card; }
+.hero-card { position: relative; flex: none; inline-size: 260px; padding: 1rem 1.125rem; border-radius: 18px; background: var(--glass); box-shadow: inset 0 0 0 1px var(--glass-line); backdrop-filter: blur(14px);  }
 .hc-row { display: flex; align-items: center; gap: .5rem; font-size: .875rem; }
 .hc-row .muted { margin-inline-start: auto; font-size: .75rem; }
 .hc-num { margin-block: .55rem .8rem; font: 800 2rem/1 var(--display); font-variant-numeric: tabular-nums; }
@@ -161,10 +161,11 @@ h1 { display: flex; margin: 0; font: 900 clamp(4.75rem, 2rem + 9.5vw, 10.5rem)/.
 .hc-bar i, .ready-bar i { display: block; height: 100%; width: calc(var(--v) * 100%); background: linear-gradient(90deg, var(--rose), var(--sun)); }
 .hc-bar-rpg i, .ready-bar i { background: repeating-linear-gradient(90deg, var(--violet) 0 8px, var(--arcane) 8px 16px); }
 @media (max-width: 1100px) { .hero-card { display: none; } }
-.cta-wrap { view-transition-name: hero-cta; }
+/* keep the switch clickable mid-transition */
+.hero-card::view-transition, .cta-wrap::view-transition { pointer-events: none; }
 ::view-transition-group(*) { animation-duration: .55s; animation-timing-function: var(--ease); }
-::view-transition-old(hero-card), ::view-transition-old(hero-cta) { animation: vt-out .3s var(--ease) both; }
-::view-transition-new(hero-card), ::view-transition-new(hero-cta) { animation: vt-in .55s var(--spring) .12s both; }
+.hero-card::view-transition-old(root), .cta-wrap::view-transition-old(root) { animation: vt-out .3s var(--ease) both; }
+.hero-card::view-transition-new(root), .cta-wrap::view-transition-new(root) { animation: vt-in .55s var(--spring) .12s both; }
 @keyframes vt-out { to { opacity: 0; translate: 0 -10px; filter: blur(4px); } }
 @keyframes vt-in { from { opacity: 0; translate: 0 14px; filter: blur(4px); } }
 @media (prefers-reduced-motion: reduce) { ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; } }
@@ -202,19 +203,19 @@ h1 { display: flex; margin: 0; font: 900 clamp(4.75rem, 2rem + 9.5vw, 10.5rem)/.
   .paused .hero *, .paused .hero *::before, .paused .hero *::after { animation-play-state: paused !important; }
 
   /* intro: sky wakes up, sun rises, title letters spring up, UI slides in */
-  .intro .sky { animation: sky-in 1.4s var(--ease) both; }
+  .intro .sky { animation: sky-in 1.4s var(--ease) backwards; }
   @keyframes sky-in { from { opacity: 0; filter: brightness(.4) saturate(.6); } }
-  .intro .sun { animation: sun-in 1.8s var(--ease) .2s both; }
+  .intro .sun { animation: sun-in 1.8s var(--ease) .2s backwards; }
   @keyframes sun-in { from { translate: -50% 40%; opacity: 0; } }
-  .intro .clouds { animation: fade-in 2s ease .4s both; }
+  .intro .clouds { animation: fade-in 2s ease .4s backwards; }
   @keyframes fade-in { from { opacity: 0; } }
-  .intro .ltr { animation: ltr-in .9s var(--spring) both; animation-delay: calc(.45s + var(--i) * 80ms); }
+  .intro .ltr { animation: ltr-in .9s var(--spring) backwards; animation-delay: calc(.45s + var(--i) * 80ms); }
   @keyframes ltr-in { from { translate: 0 105%; } }
-  .intro .in { animation: ui-in .8s var(--ease) both; animation-delay: calc(.85s + var(--i) * 90ms); }
+  .intro .in { animation: ui-in .8s var(--ease) backwards; animation-delay: calc(.85s + var(--i) * 90ms); }
   @keyframes ui-in { from { opacity: 0; translate: 0 18px; } }
   .intro .hero-card.in { animation-name: card-in; }
   @keyframes card-in { from { opacity: 0; translate: 24px 0; } }
-  .intro .haze { animation: haze-in 1.6s var(--ease) .1s both; }
+  .intro .haze { animation: haze-in 1.6s var(--ease) .1s backwards; }
   @keyframes haze-in { from { translate: 0 40px; opacity: 0; } }
 
   /* scroll-driven exit (no opacity on controls — they stay full contrast) */
@@ -223,7 +224,7 @@ h1 { display: flex; margin: 0; font: 900 clamp(4.75rem, 2rem + 9.5vw, 10.5rem)/.
     @keyframes scene-exit { to { translate: 0 14vh; scale: .96; } }
     .sky { animation: sky-exit linear both; animation-timeline: scroll(root); animation-range: 0 100vh; }
     @keyframes sky-exit { to { translate: 0 10vh; } }
-    .intro .sky { animation: sky-in 1.4s var(--ease) both, sky-exit linear both; animation-timeline: auto, scroll(root); animation-range: normal, 0 100vh; }
+    .intro .sky { animation: sky-in 1.4s var(--ease) backwards, sky-exit linear both; animation-timeline: auto, scroll(root); animation-range: normal, 0 100vh; }
     .hero-copy { animation: copy-exit linear both; animation-timeline: scroll(root); animation-range: 0 90vh; }
     @keyframes copy-exit { to { translate: 0 -6vh; } }
   }
