@@ -401,3 +401,13 @@ textarea.inp { min-block-size: 80px; resize: vertical; font: 500 .8125rem ui-mon
 .lc-list b { color: var(--ink); } .lc-list .warn { color: var(--sun); }
 @media (max-width: 1100px) { .city-top { grid-template-columns: auto 1fr; } .city-kpis { grid-column: 1 / -1; min-inline-size: 0; } .city-rel { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .city-rel { grid-template-columns: 1fr; } }
+
+/* simplified city card */
+.dev-tag { font-size: .75rem; color: var(--muted); }
+.city-card .city-head { display: flex; align-items: center; gap: 1rem; margin-block: .25rem 1.5rem; }
+.city-card .city-name { margin: 0 0 .5rem; font: 800 1.5rem/1 var(--display); }
+.city-card .city-lvl { display: grid; gap: .5rem; margin: 0 0 1.5rem; font-size: .8125rem; color: var(--muted); }
+.city-card .lvlbar { max-inline-size: none; }
+.city-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+.city-nums dt { font-size: .75rem; color: var(--muted); }
+.city-nums dd { margin: .2rem 0 0; font: 700 1.5rem var(--display); font-variant-numeric: tabular-nums; }
