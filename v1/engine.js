@@ -198,7 +198,7 @@ function houseIsland(seed) {
 }
 function arcaneIsland(seed) {
   const r = rng(seed), noise = makeNoise(r), b = new Builder();
-  const N = 34, ci = 17; const t = terrain(b, r, noise, { N, peak: 11, depth: 17, plot: [ci - 5, ci + 4, ci - 5, ci + 4], plotH: 6, trees: 0.05 });
+  const N = 34, ci = 17; const t = terrain(b, r, noise, { N, peak: 8, depth: 17, plot: [ci - 5, ci + 4, ci - 5, ci + 4], plotH: 6, trees: 0.022, margin: 2 });
   const g = 6;
   const tower = (x0, y0, w, hgt, roof) => {
     for (let z = g - 1; z < g + hgt; z++) for (let y = y0; y < y0 + w; y++) for (let x = x0; x < x0 + w; x++) b.set(x, y, z, (z + x + y) % 5 ? "brick" : "brickDark");
@@ -216,7 +216,7 @@ function arcaneIsland(seed) {
   tower(ci - 5, ci + 2, 3, 6, true);
   for (let x = ci - 4; x <= ci + 3; x++) for (let z = g - 1; z < g + 3; z++) b.set(x, ci + 3, z, (x + z) % 2 ? "brick" : "brickDark");
   // crystals: on surface, hanging below
-  for (let i = 0; i < 70; i++) {
+  for (let i = 0; i < 34; i++) {
     const x = (r() * 34) | 0, y = (r() * 34) | 0, h = t.top.get(x + "," + y);
     if (h == null) continue;
     if (Math.abs(x - ci) < 6 && Math.abs(y - ci) < 6) continue;
