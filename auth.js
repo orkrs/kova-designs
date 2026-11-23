@@ -1,4 +1,4 @@
-import { $, $$, session, bridgeValidity, busy, wait, go, mountScene, reduce } from "./site.js?v=12";
+import { $, $$, session, bridgeValidity, busy, wait, go, mountScene, reduce } from "./site.js?v=13";
 
 mountScene($(".scene"), {
   industrial: { scene: "industrial", seed: 11, pal: "dusk", fit: 0.92, padTop: 0.16 },

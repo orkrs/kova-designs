@@ -1,4 +1,4 @@
-import { $, $$, session, drawHead, drawBanner, reduce } from "./site.js?v=12";
+import { $, $$, session, drawHead, drawBanner, reduce } from "./site.js?v=13";
 
 const me = session.get() || { nick: "Kova_Player" };
 $$("[data-head]").forEach((c) => c.dataset.head && drawHead(c, c.dataset.head, 4));
@@ -6,7 +6,7 @@ $$("[data-head-me]").forEach((c) => drawHead(c, me.nick, 4));
 $$("[data-nick]").forEach((n) => (n.textContent = me.nick + " (вы)"));
 
 const app = $(".st-app");
-const NAMES = { citizen: "Житель", guard: "Стражник", treasurer: "Казначей", diplomat: "Дипломат", mayor: "Мэр" };
+const NAMES = { citizen: "Житель", treasurer: "Казначей", diplomat: "Дипломат", mayor: "Мэр" };
 let role = new URLSearchParams(location.search).get("role");
 if (!NAMES[role]) role = "treasurer";
 let tab = "overview";
@@ -44,24 +44,18 @@ const toast = $(".toast"); let tt;
 const say = (m) => { toast.textContent = m; toast.hidden = false; clearTimeout(tt); tt = setTimeout(() => (toast.hidden = true), 2200); };
 document.addEventListener("click", (e) => { const b = e.target.closest("[data-toast]"); if (b && b.tagName === "BUTTON") say(b.dataset.toast); });
 
-// vote
+// vote (same vote shown in Обзор and Голосования — keep both in sync)
 let yes = 14, no = 6, voted = null;
-$("[data-vote]").addEventListener("click", (e) => {
-  const b = e.target.closest("[data-v]"); if (!b) return;
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-vote] [data-v]"); if (!b) return;
   if (voted) { voted === "yes" ? yes-- : no--; } voted = b.dataset.v; voted === "yes" ? yes++ : no++;
-  $("[data-yes]").textContent = yes; $("[data-no]").textContent = no;
-  $(".vbar i").style.setProperty("--v", yes / (yes + no)); $(".vbar").setAttribute("aria-label", `За ${yes}, против ${no}`);
-  $$("[data-v]").forEach((x) => x.setAttribute("aria-pressed", x === b)); say("Голос учтён");
+  $$("[data-yes]").forEach((x) => (x.textContent = yes)); $$("[data-no]").forEach((x) => (x.textContent = no));
+  $$(".vbar").forEach((v) => { v.querySelector("i").style.setProperty("--v", yes / (yes + no)); v.setAttribute("aria-label", `За ${yes}, против ${no}`); });
+  $$("[data-v]").forEach((x) => x.setAttribute("aria-pressed", x.dataset.v === voted)); say("Голос учтён");
 });
-
-// treasury tax
-const tax = $("#tax");
-tax.addEventListener("input", () => { tax.style.setProperty("--p", tax.value * 10); $("[data-tax]").textContent = tax.value; tax.setAttribute("aria-valuetext", tax.value + " процентов"); });
-tax.style.setProperty("--p", 50);
 
 // dialogs
 $$("[data-open]").forEach((b) => b.addEventListener("click", () => $("#" + b.dataset.open).showModal()));
-$("#war-dlg").addEventListener("close", (e) => e.target.returnValue === "ok" && say("Война объявлена: " + $("#enemy").value));
 $("#leave-dlg").addEventListener("close", (e) => e.target.returnValue === "ok" && say("Вы покинули город (демо)"));
 
 // manage: rename + reroll coat of arms
