@@ -1,4 +1,4 @@
-import { $, $$, session, drawHead, drawBanner, reduce } from "./site.js?v=13";
+import { $, $$, session, drawHead, drawBanner, reduce } from "./site.js?v=14";
 
 const me = session.get() || { nick: "Kova_Player" };
 $$("[data-head]").forEach((c) => c.dataset.head && drawHead(c, c.dataset.head, 4));

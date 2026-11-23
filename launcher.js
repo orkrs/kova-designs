@@ -1,7 +1,7 @@
-import { $, $$, drawHead, mountScene, world, reduce } from "./site.js?v=13";
-import { renderStatic } from "./engine.js?v=13";
+import { $, $$, drawHead, mountScene, world, reduce } from "./site.js?v=14";
+import { renderStatic } from "./engine.js?v=14";
 
-const order = ["login", "home", "servers", "download", "settings", "mods"];
+const order = ["login", "home", "servers", "settings", "mods"];
 let cur = "home";
 function select(k, { focus = false } = {}) {
   if (!order.includes(k) || k === cur) return;
@@ -14,7 +14,7 @@ function select(k, { focus = false } = {}) {
   };
   if (!reduce && document.startViewTransition) { try { document.startViewTransition({ update: upd, types: [dir] }); } catch { document.startViewTransition(upd); } } else upd();
 }
-document.addEventListener("click", (e) => { const b = e.target.closest("[data-screen], [data-fake]"); if (!b || !b.closest(".lw, .screens")) return; e.preventDefault(); select(b.dataset.screen || b.dataset.fake); });
+document.addEventListener("click", (e) => { const b = e.target.closest("[data-screen], [data-fake]"); if (b?.dataset.fake === "download") return; if (!b || !b.closest(".lw, .screens")) return; e.preventDefault(); select(b.dataset.screen || b.dataset.fake); });
 $(".l-login form").addEventListener("submit", (e) => { e.preventDefault(); select("home"); });
 $(".screens").addEventListener("keydown", (e) => {
   const i = order.indexOf(cur), d = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
@@ -41,22 +41,36 @@ function drawModIcon(c, i) {
   x.fillStyle = "#ffffff99"; for (let k = 0; k < 4; k++) x.fillRect(2 + ((i * 3 + k * 5) % 4), 2 + ((i + k * 3) % 4), 1, 1);
 }
 
-// download simulation (runs while the screen is visible)
-let p = 0, timer = 0, paused = false;
-const bar = $(".bigbar"), pause = $("[data-pause]");
+// per-server modpack update (inline on the server card); "Играть" unlocks only when the pack is current
+const card = $('[data-pack="tfg"]'), bar = $(".bigbar", card), upd = $("[data-upd]", card), pauseB = $("[data-pause]", card);
+const playB = $("[data-play]", card), updB = $("[data-update]", card), why = $("[data-why]", card);
+const homeB = $("[data-home-play]"), homeS = $("[data-home-state]");
+let p = 0, timer = 0, paused = false, state = "outdated";
+const toast = (m) => { let t = $(".toast"); if (!t) { t = document.createElement("p"); t.className = "toast"; t.setAttribute("role", "status"); document.body.append(t); } t.textContent = m; t.hidden = false; clearTimeout(t._t); t._t = setTimeout(() => (t.hidden = true), 2000); };
+function paint() {
+  card.dataset.state = state; upd.hidden = state !== "updating"; updB.hidden = state !== "outdated";
+  playB.disabled = state !== "ready"; playB.classList.toggle("btn-sun", state === "ready"); playB.classList.toggle("themed", state === "ready"); playB.classList.toggle("btn-ghost", state !== "ready");
+  why.hidden = state === "ready";
+  $("[data-pack-text]", card).textContent = state === "ready" ? "Сборка актуальна · 0.9.2" : state === "updating" ? "Обновление 0.9.1 → 0.9.2" : "Доступно обновление 0.9.1 → 0.9.2 · 412 МБ";
+  homeB.textContent = state === "ready" ? "ИГРАТЬ" : state === "updating" ? `ОБНОВЛЕНИЕ ${Math.round(p)}%` : "ОБНОВИТЬ";
+  homeS.textContent = state === "ready" ? "Сборка 0.9.2 · готова к запуску" : state === "updating" ? "Идёт обновление сборки" : "Доступно обновление 0.9.1 → 0.9.2";
+}
 function tick() {
-  if (paused) return; p = Math.min(100, p + 0.7 + Math.random() * 0.8);
-  bar.style.setProperty("--p", p.toFixed(1)); bar.setAttribute("aria-valuenow", Math.round(p)); $("[data-p]").textContent = Math.round(p);
-  $("[data-mb]").textContent = Math.round(p * 4.12); $("[data-eta]").textContent = p >= 100 ? "готово" : `~${Math.ceil((100 - p) / 3)} с`;
-  const fp = $("[data-file-p]"); if (fp) fp.textContent = Math.min(100, Math.round(64 + p / 3)) + "%";
-  if (p >= 100) { clearInterval(timer); timer = 0; }
+  if (paused) return;
+  p = Math.min(100, p + (reduce ? 4 : 0.9 + Math.random() * 0.9));
+  bar.style.setProperty("--p", p.toFixed(1)); bar.setAttribute("aria-valuenow", Math.round(p));
+  $("[data-p]", card).textContent = Math.round(p); $("[data-mb]", card).textContent = Math.round(p * 4.12);
+  if (p >= 100) { clearInterval(timer); timer = 0; state = "ready"; toast("TerraFirmaGreg обновлена"); }
+  paint();
 }
-pause.addEventListener("click", () => { paused = !paused; pause.setAttribute("aria-pressed", paused); pause.textContent = paused ? "Продолжить" : "Пауза"; $(".l-download").classList.toggle("paused-dl", paused); });
-function onShow(k) {
-  const panel = $(`[data-panel="${k}"]`); statics(panel); mountIn(k);
-  clearInterval(timer); timer = 0;
-  if (k === "download") { if (p >= 100) p = 0; if (reduce) { p = 72; paused = true; } tick(); paused = reduce; timer = setInterval(tick, 250); }
-}
+function start() { state = "updating"; p = 0; paused = false; pauseB.textContent = "Пауза"; pauseB.setAttribute("aria-pressed", false); paint(); clearInterval(timer); timer = setInterval(tick, 200); }
+updB.addEventListener("click", start);
+pauseB.addEventListener("click", () => { paused = !paused; pauseB.setAttribute("aria-pressed", paused); pauseB.textContent = paused ? "Продолжить" : "Пауза"; card.classList.toggle("paused-dl", paused); });
+$("[data-cancel]", card).addEventListener("click", () => { clearInterval(timer); timer = 0; state = "outdated"; p = 0; bar.style.setProperty("--p", 0); paint(); });
+playB.addEventListener("click", () => toast("Запуск TerraFirmaGreg… (демо)"));
+homeB.addEventListener("click", () => { if (state === "ready") return toast("Запуск TerraFirmaGreg… (демо)"); select("servers"); if (state === "outdated") start(); });
+paint();
+function onShow(k) { const panel = $(`[data-panel="${k}"]`); statics(panel); mountIn(k); }
 
 // settings: RAM slider
 const ram = $("#ram");
@@ -68,6 +82,7 @@ addEventListener("kova:world", ({ detail }) => (wt.checked = detail === "rpg"));
 $("[data-notify]").addEventListener("click", (e) => { const b = e.currentTarget, on = b.getAttribute("aria-pressed") !== "true"; b.setAttribute("aria-pressed", on); b.textContent = on ? "Сообщим первым" : "Уведомить о запуске"; });
 
 // initial screen (deep link via hash)
-const start = location.hash.slice(1);
+let initial = location.hash.slice(1);
+if (initial === "download") { initial = "servers"; history.replaceState(null, "", "#servers"); }
 onShow("home");
-if (order.includes(start) && start !== "home") select(start);
+if (order.includes(initial) && initial !== "home") select(initial);

@@ -487,3 +487,21 @@ canvas.banner.huge { width: 88px; height: 120px; }
 .ws-side b { font: 700 .9375rem var(--display); }
 .ws-side small { font-size: .75rem; color: var(--muted); }
 .warscore .score { margin: 0; }
+/* inline modpack update on server cards */
+.pack { display: flex; align-items: center; gap: .5rem; margin: 0; font-size: .8125rem; font-weight: 600; }
+.pk-dot { width: 8px; height: 8px; flex: none; background: var(--sun); }
+[data-state="ready"] .pk-dot { background: #7dffa8; }
+.pk-dot.miss { background: rgb(255 255 255 / .3); }
+.upd .bigbar { margin-top: 0; height: 10px; }
+.upd .dl-stats { margin-top: .4rem; }
+.upd-ctl { display: flex; gap: .4rem; margin-top: .5rem; }
+.card-btns { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.card-btns > [hidden] + * , .card-btns > :only-child { grid-column: 1 / -1; }
+.card-btns .btn:disabled { opacity: .45; cursor: not-allowed; }
+.l-card .hint { margin: -.25rem 0 0; }
+.crests { display: inline-flex; flex: none; }
+.crests canvas.banner { width: 24px; height: 33px; }
+.crests canvas.banner + canvas.banner { margin-inline-start: -6px; }
+.crests.sm canvas.banner { width: 15px; height: 20px; }
+.crests.sm canvas.banner + canvas.banner { margin-inline-start: -3px; }
+.ws-side .crests canvas.banner { width: 33px; height: 45px; }

@@ -469,3 +469,7 @@ canvas.banner.big { width: 66px; height: 90px; }
 .dot-ok { background: #7dffa8; } .dot-warn { background: var(--sun); } .dot-war { background: #ff6b7d; } .dot-trade { background: var(--arcane); }
 @media (max-width: 860px) { .cities-grid { grid-template-columns: 1fr; } .city-demo { min-block-size: 320px; } }
 @media (max-width: 480px) { .feats { grid-template-columns: 1fr; } }
+.crests { display: inline-flex; flex: none; }
+.crests.sm canvas.banner { width: 15px; height: 20px; }
+.crests.sm canvas.banner + canvas.banner { margin-inline-start: -3px; }
+.lc-list .crests { align-self: center; }

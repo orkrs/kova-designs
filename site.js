@@ -1,6 +1,6 @@
 // Shared by every page: fake session in the header, sunset/moon world toggle,
 // form helpers (aria-invalid bridge, show password, submit loading), pixel skins, island scenes.
-import { IslandView } from "./engine.js?v=13";
+import { IslandView } from "./engine.js?v=14";
 
 const root = document.documentElement;
 export const $ = (s, r = document) => r.querySelector(s);

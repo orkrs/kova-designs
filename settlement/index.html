@@ -9,7 +9,7 @@
 <script>try{var w=localStorage.getItem("kova.world");if(w==="rpg"){document.documentElement.dataset.server="rpg"}}catch(e){}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 2 2%22 shape-rendering=%22crispEdges%22%3E%3Crect width=%221%22 height=%221%22 fill=%22%23ffcf7a%22/%3E%3Crect x=%221%22 width=%221%22 height=%221%22 fill=%22%23ff7fa6%22/%3E%3Crect y=%221%22 width=%221%22 height=%221%22 fill=%22%23fff%22/%3E%3Crect x=%221%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23ff9b6b%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=13"><link rel="stylesheet" href="../pages.css?v=13">
+<link rel="stylesheet" href="../style.css?v=14"><link rel="stylesheet" href="../pages.css?v=14">
 <link rel="expect" href="#main" blocking="render">
 </head><body>
 <a class="skip" href="#main">К содержимому</a>
@@ -45,7 +45,7 @@
   <div class="st-actions" data-vote><button type="button" class="btn btn-sun themed" data-v="yes">За</button><button type="button" class="btn btn-ghost" data-v="no">Против</button></div>
 </article><article class="st-card warscore" aria-labelledby="war-h">
   <div class="st-row"><h4 id="war-h" style="margin:0">Счёт войны</h4><span class="dev-tag">войны · в планах</span></div>
-  <div class="ws"><div class="ws-side"><canvas class="banner" data-banner="Северный союз" aria-hidden="true"></canvas><b>Северный союз</b><small>союз · 3 города</small></div>
+  <div class="ws"><div class="ws-side"><span class="crests" aria-hidden="true"><canvas class="banner" data-banner="Медноград"></canvas><canvas class="banner" data-banner="Ост-Хольм"></canvas><canvas class="banner" data-banner="Кремнёвка"></canvas></span><b>Союз</b><small>Медноград · Ост-Хольм · Кремнёвка</small></div>
   <p class="score" aria-label="Счёт по выигранным битвам: 3 на 1">3 <span>:</span> 1</p>
   <div class="ws-side"><canvas class="banner" data-banner="Чёрный Брод" aria-hidden="true"></canvas><b>Чёрный Брод</b><small>поселение</small></div></div>
   <p class="hint" style="text-align:center">Счёт — выигранные битвы</p>
@@ -55,11 +55,11 @@
   <div class="vbar" aria-label="За 14, против 6"><i style="--v:.7"></i></div>
   <p class="vmeta"><span>За <b data-yes>14</b></span><span>Против <b data-no>6</b></span></p>
   <div class="st-actions" data-vote><button type="button" class="btn btn-sun themed" data-v="yes">За</button><button type="button" class="btn btn-ghost" data-v="no">Против</button></div>
-</article><ul class="list"><li><span class="grow"><b>Принять blaze_kate в жители</b><small>завершено 20 ноя</small></span><span class="pill pill-ok">принято</span></li><li><span class="grow"><b>Вступить в Северный союз</b><small>завершено 18 ноя</small></span><span class="pill pill-ok">принято</span></li></ul></section><section class="st-panel" role="tabpanel" aria-labelledby="st-treasury" data-panel="treasury" hidden><h3>Склад и казна</h3><p class="hint">Общие ресурсы города.</p>
+</article><ul class="list"><li><span class="grow"><b>Принять blaze_kate в жители</b><small>завершено 20 ноя</small></span><span class="pill pill-ok">принято</span></li><li><span class="grow"><b>Союз с Ост-Хольмом и Кремнёвкой</b><small>завершено 18 ноя</small></span><span class="pill pill-ok">принято</span></li></ul></section><section class="st-panel" role="tabpanel" aria-labelledby="st-treasury" data-panel="treasury" hidden><h3>Склад и казна</h3><p class="hint">Общие ресурсы города.</p>
 <ul class="stock"><li><b>1 240</b><span>медь</span></li><li><b>380</b><span>олово</span></li><li><b>96</b><span>бронза</span></li></ul>
 <div class="st-card"><h4>Последние операции</h4><ul class="list"><li><span class="grow"><b>Медь +128</b><small>сдал Gregorius</small></span><span class="muted small">сегодня</span></li><li><span class="grow"><b>Бронза −32</b><small>на ворота</small></span><span class="muted small">вчера</span></li></ul></div>
 <div class="st-actions"><button type="button" class="btn btn-ghost" data-toast="Ресурсы выданы (демо)">Выдать ресурсы</button></div></section><section class="st-panel" role="tabpanel" aria-labelledby="st-alliances" data-panel="alliances" hidden><div class="st-row"><h3>Союзы</h3><button type="button" class="btn btn-ghost btn-sm" data-toast="Запрос союза отправлен">Предложить союз</button></div>
-<ul class="list"><li><canvas class="banner" data-banner="Северный союз" aria-hidden="true"></canvas><span class="grow"><b>Северный союз</b><small>Медноград · Ост-Хольм · Кремнёвка</small></span><span class="pill pill-ok">состоим</span></li></ul></section><section class="st-panel" role="tabpanel" aria-labelledby="st-roles" data-panel="roles" hidden><h3>Роли</h3>
+<ul class="list"><li><span class="crests" aria-hidden="true"><canvas class="banner" data-banner="Медноград"></canvas><canvas class="banner" data-banner="Ост-Хольм"></canvas><canvas class="banner" data-banner="Кремнёвка"></canvas></span><span class="grow"><b>Союз</b><small>Медноград · Ост-Хольм · Кремнёвка</small></span><span class="pill pill-ok">состоим</span></li></ul></section><section class="st-panel" role="tabpanel" aria-labelledby="st-roles" data-panel="roles" hidden><h3>Роли</h3>
 <ul class="list"><li><span class="grow"><b>Мэр</b><small>Ore_Wolf</small></span></li>
 <li><span class="grow"><b>Казначей</b><small>склад и казна</small></span><select class="inp sel" aria-label="Казначей"><option selected>Вы</option><option>blaze_kate</option><option>Steve_Smith</option><option>mira_ore</option><option>Gregorius</option></select></li>
 <li><span class="grow"><b>Дипломат</b><small>союзы</small></span><select class="inp sel" aria-label="Дипломат"><option selected>Gregorius</option><option>blaze_kate</option><option>Steve_Smith</option></select></li></ul>
@@ -87,6 +87,6 @@
     <p class="foot-copy muted small">© 2026 KOVA</p>
   </div>
 </footer>
-<script type="module" src="../settlement.js?v=13"></script>
+<script type="module" src="../settlement.js?v=14"></script>
 </body>
 </html>

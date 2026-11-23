@@ -1,4 +1,4 @@
-import { $, $$, session, drawBody, drawHead, bridgeValidity, busy, wait, go, mountScene } from "./site.js?v=13";
+import { $, $$, session, drawBody, drawHead, bridgeValidity, busy, wait, go, mountScene } from "./site.js?v=14";
 
 const s = session.get();
 const me = s || { nick: "Kova_Player", email: "player@mail.ru", via: "email", since: Date.parse("2026-11-01") };
