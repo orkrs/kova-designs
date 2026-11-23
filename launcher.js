@@ -1,5 +1,5 @@
-import { $, $$, drawHead, mountScene, world, reduce } from "./site.js?v=11";
-import { renderStatic } from "./engine.js?v=11";
+import { $, $$, drawHead, mountScene, world, reduce } from "./site.js?v=12";
+import { renderStatic } from "./engine.js?v=12";
 
 const order = ["login", "home", "servers", "download", "settings", "mods"];
 let cur = "home";

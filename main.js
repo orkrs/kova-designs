@@ -1,5 +1,5 @@
-import { IslandView, renderStatic, drawCloud } from "./engine.js?v=11";
-import { world } from "./site.js?v=11";
+import { IslandView, renderStatic, drawCloud } from "./engine.js?v=12";
+import { world } from "./site.js?v=12";
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const root = document.documentElement;

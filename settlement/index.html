@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru" data-server="tfg" data-page="settlement">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Поселение — KOVA</title>
+<meta name="description" content="Поселение в мире KOVA.">
+<meta name="theme-color" content="#2a1f45">
+<script>try{var w=localStorage.getItem("kova.world");if(w==="rpg"){document.documentElement.dataset.server="rpg"}}catch(e){}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 2 2%22 shape-rendering=%22crispEdges%22%3E%3Crect width=%221%22 height=%221%22 fill=%22%23ffcf7a%22/%3E%3Crect x=%221%22 width=%221%22 height=%221%22 fill=%22%23ff7fa6%22/%3E%3Crect y=%221%22 width=%221%22 height=%221%22 fill=%22%23fff%22/%3E%3Crect x=%221%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23ff9b6b%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=12"><link rel="stylesheet" href="../pages.css?v=12">
+<link rel="expect" href="#main" blocking="render">
+</head><body>
+<a class="skip" href="#main">К содержимому</a>
+<header class="nav">
+  <a class="brand" href="../" aria-label="KOVA — на главную"><span class="brand-mark" aria-hidden="true"></span><span translate="no">KOVA</span></a>
+  <nav aria-label="Основное">
+    <a href="../#servers">Сервера</a><a href="../#road">Дорожная карта</a><a href="../launcher/">Лаунчер</a><a href="../#news">Новости</a>
+  </nav>
+  <div class="nav-end">
+    <span class="net-pill"><span class="live" aria-hidden="true"></span><b>128</b>&nbsp;в сети</span>
+    <button type="button" class="world-btn" aria-pressed="false" aria-label="Тема: закат TFG. Переключить на ночь RPG"><span class="wb-sun" aria-hidden="true"></span><span class="wb-moon" aria-hidden="true"></span></button>
+    <a class="btn btn-ghost auth-link" href="../login/" data-auth>Войти</a>
+  </div>
+</header>
+<main id="main" class="page">
+  <div class="psky" aria-hidden="true"><div class="stars-bg"></div></div>
+  <div class="st">
+    <header class="st-hero rise" style="--i:0">
+      <canvas class="banner huge" data-banner="Медноград" data-city-banner role="img" aria-label="Герб города"></canvas>
+      <div class="st-id"><p class="eyebrow-s">Поселение · TFG</p><h1 class="h-page" data-city-name>Медноград</h1>
+        <div class="st-lvl"><span>Уровень 3</span><div class="lvlbar" aria-label="Прогресс до 4 уровня: 62%"><i style="--v:.62"></i></div></div></div>
+      <div class="st-hero-act"><span class="pill pill-sun" data-role-pill>Казначей</span><button type="button" class="btn btn-ghost btn-sm" data-roles="citizen guard treasurer diplomat" data-open="leave-dlg">Покинуть город</button></div>
+    </header>
+    <fieldset class="roles-pick rise" style="--i:1"><legend>Демо: смотреть как</legend><label><input type="radio" name="role" value="citizen"><span><b>Житель</b><small>Голосует, видит город</small></span></label><label><input type="radio" name="role" value="guard"><span><b>Стражник</b><small>+ оборона и войны</small></span></label><label><input type="radio" name="role" value="treasurer" checked><span><b>Казначей</b><small>+ склад, налоги, торговля</small></span></label><label><input type="radio" name="role" value="diplomat"><span><b>Дипломат</b><small>+ союзы и споры</small></span></label><label><input type="radio" name="role" value="mayor"><span><b>Мэр</b><small>всё + управление</small></span></label></fieldset>
+    <div class="st-app panel rise" style="--i:2">
+      <div class="st-tabs" role="tablist" aria-label="Разделы поселения"><button type="button" role="tab" id="st-overview" data-tab="overview" data-roles="all" aria-selected="true" tabindex="0">Обзор</button><button type="button" role="tab" id="st-people" data-tab="people" data-roles="all" aria-selected="false" tabindex="-1">Жители</button><button type="button" role="tab" id="st-laws" data-tab="laws" data-roles="all" aria-selected="false" tabindex="-1">Законы</button><button type="button" role="tab" id="st-treasury" data-tab="treasury" data-roles="treasurer mayor" aria-selected="false" tabindex="-1">Казна</button><button type="button" role="tab" id="st-defense" data-tab="defense" data-roles="guard mayor" aria-selected="false" tabindex="-1">Оборона</button><button type="button" role="tab" id="st-diplomacy" data-tab="diplomacy" data-roles="diplomat mayor" aria-selected="false" tabindex="-1">Дипломатия</button><button type="button" role="tab" id="st-manage" data-tab="manage" data-roles="mayor" aria-selected="false" tabindex="-1">Управление</button></div>
+      <div class="st-body">
+        <section class="st-panel" role="tabpanel" aria-labelledby="st-overview" data-panel="overview"><dl class="st-nums"><div><dt>Жители</dt><dd>24</dd></div><div><dt>Союзники</dt><dd>2</dd></div><div><dt>Голосования</dt><dd>1</dd></div></dl>
+<article class="st-card vote">
+  <p class="eyebrow-s">Идёт голосование · до 28 ноя</p>
+  <h3>Снизить рыночный налог с 5% до 3%</h3>
+  <div class="vbar" aria-label="За 14, против 6"><i style="--v:.7"></i></div>
+  <p class="vmeta"><span>За <b data-yes>14</b></span><span>Против <b data-no>6</b></span></p>
+  <div class="st-actions" data-vote><button type="button" class="btn btn-sun themed" data-v="yes">За</button><button type="button" class="btn btn-ghost" data-v="no">Против</button></div>
+</article>
+<article class="st-card"><h4>Летопись</h4><ol class="chron-s"><li><time datetime="2026-11-22">22 ноя</time>Ржавая Бухта оспорила границу</li><li><time datetime="2026-11-18">18 ноя</time>Вступили в Северный союз</li><li><time datetime="2026-11-03">3 ноя</time>Основан Медноград</li></ol></article></section><section class="st-panel" role="tabpanel" aria-labelledby="st-people" data-panel="people" hidden><div class="st-row"><h3>Жители <span class="muted">24</span></h3><button type="button" class="btn btn-ghost btn-sm" data-roles="mayor" data-toast="Приглашение скопировано">Пригласить</button></div>
+<ul class="list ppl"><li><canvas data-head="Ore_Wolf" ></canvas><span class="grow"><b translate="no">Ore_Wolf</b><small>Мэр</small></span></li><li><canvas data-head="" data-head-me></canvas><span class="grow"><b translate="no" data-nick>Вы</b><small>Казначей</small></span><select class="inp sel" aria-label="Должность Вы" data-roles="mayor"><option>Житель</option><option>Стражник</option><option>Казначей</option><option>Дипломат</option></select></li><li><canvas data-head="blaze_kate" ></canvas><span class="grow"><b translate="no">blaze_kate</b><small>Капитан стражи</small></span><select class="inp sel" aria-label="Должность blaze_kate" data-roles="mayor"><option>Житель</option><option>Стражник</option><option>Казначей</option><option>Дипломат</option></select></li><li><canvas data-head="Gregorius" ></canvas><span class="grow"><b translate="no">Gregorius</b><small>Дипломат</small></span><select class="inp sel" aria-label="Должность Gregorius" data-roles="mayor"><option>Житель</option><option>Стражник</option><option>Казначей</option><option>Дипломат</option></select></li><li><canvas data-head="Steve_Smith" ></canvas><span class="grow"><b translate="no">Steve_Smith</b><small>Житель</small></span><select class="inp sel" aria-label="Должность Steve_Smith" data-roles="mayor"><option>Житель</option><option>Стражник</option><option>Казначей</option><option>Дипломат</option></select></li><li><canvas data-head="mira_ore" ></canvas><span class="grow"><b translate="no">mira_ore</b><small>Житель</small></span><select class="inp sel" aria-label="Должность mira_ore" data-roles="mayor"><option>Житель</option><option>Стражник</option><option>Казначей</option><option>Дипломат</option></select></li></ul></section><section class="st-panel" role="tabpanel" aria-labelledby="st-laws" data-panel="laws" hidden><div class="st-row"><h3>Законы</h3><button type="button" class="btn btn-ghost btn-sm" data-roles="mayor diplomat" data-toast="Черновик закона создан">Предложить закон</button></div>
+<ul class="list"><li><span class="grow"><b>Рыночный налог 5%</b><small>с каждой сделки на рынке</small></span><span class="pill pill-sun">на голосовании</span></li><li><span class="grow"><b>Ночная стража</b><small>патруль стен после заката</small></span><span class="pill pill-ok">действует</span></li><li><span class="grow"><b>Шахта общая</b><small>добыча для всех жителей</small></span><span class="pill pill-ok">действует</span></li></ul></section><section class="st-panel" role="tabpanel" aria-labelledby="st-treasury" data-panel="treasury" hidden><h3>Казна</h3><p class="hint">Склад города — ресурсы, не валюта.</p>
+<ul class="stock"><li><b>1 240</b><span>медь</span></li><li><b>380</b><span>олово</span></li><li><b>96</b><span>бронза</span></li></ul>
+<div class="st-card"><div class="row-between"><label for="tax">Рыночный налог</label><b class="taxv"><span data-tax>5</span>%</b></div><input class="range" id="tax" type="range" min="0" max="10" value="5" aria-valuetext="5 процентов"></div>
+<div class="st-card"><h4>Торговые маршруты</h4><ul class="list"><li><span class="grow"><b>Медь → Ост-Хольм</b><small>128 слитков в неделю</small></span><input class="switch-t" type="checkbox" checked aria-label="Маршрут в Ост-Хольм"></li><li><span class="grow"><b>Олово ← Кремнёвка</b><small>64 в неделю</small></span><input class="switch-t" type="checkbox" checked aria-label="Маршрут из Кремнёвки"></li></ul></div></section><section class="st-panel" role="tabpanel" aria-labelledby="st-defense" data-panel="defense" hidden><h3>Оборона</h3>
+<article class="st-card war"><p class="eyebrow-s war-t">Война · Чёрный Брод</p><p class="score">3 <span>:</span> 1</p><p class="hint">Осада заставы у реки</p></article>
+<ul class="list"><li><span class="grow"><b>Стены</b><small>прочность 82%</small></span></li><li><span class="grow"><b>Стража в сети</b><small>3 из 5</small></span></li></ul>
+<div class="st-actions"><button type="button" class="btn btn-ghost" data-toast="Тревога поднята">Поднять тревогу</button><button type="button" class="btn btn-danger" data-roles="mayor" data-open="war-dlg">Объявить войну</button></div></section><section class="st-panel" role="tabpanel" aria-labelledby="st-diplomacy" data-panel="diplomacy" hidden><h3>Дипломатия</h3>
+<ul class="list"><li><canvas class="banner" data-banner="Северный союз" aria-hidden="true"></canvas><span class="grow"><b>Северный союз</b><small>3 города</small></span><span class="pill pill-ok">союз</span></li>
+<li><canvas class="banner" data-banner="Ржавая Бухта" aria-hidden="true"></canvas><span class="grow"><b>Ржавая Бухта</b><small>спор о границе</small></span><button type="button" class="btn btn-ghost btn-sm" data-toast="Предложение отправлено">Предложить мир</button></li></ul>
+<div class="st-actions"><button type="button" class="btn btn-ghost" data-toast="Запрос союза отправлен">Новый союз</button></div></section><section class="st-panel" role="tabpanel" aria-labelledby="st-manage" data-panel="manage" hidden><h3>Управление</h3>
+<form class="stack st-form" data-toast-form="Сохранено"><div class="field"><label for="cname">Название города</label><input class="inp" id="cname" value="Медноград" maxlength="24" autocomplete="off" required></div>
+<label class="toggle-row" for="open"><span>Свободный вход<small>иначе — по приглашению</small></span><input class="switch-t" id="open" type="checkbox"></label>
+<div class="row-between" style="justify-content:flex-start;gap:.6rem"><button type="button" class="btn btn-ghost" data-reroll>Новый герб</button><button type="submit" class="btn btn-sun themed">Сохранить</button></div></form></section>
+      </div>
+    </div>
+    <p class="lp-note" style="width:auto">Мод «Поселения» в разработке — данные демонстрационные.</p>
+  </div>
+</main>
+<dialog class="dlg" id="war-dlg" aria-labelledby="war-t" closedby="any"><h2 id="war-t">Объявить войну?</h2><p class="hint">Союзники получат уведомление. Отменить можно только миром.</p>
+<form method="dialog" class="stack" style="margin-top:1rem"><div class="field"><label for="enemy">Город</label><select class="inp" id="enemy"><option>Ржавая Бухта</option><option>Чёрный Брод</option></select></div><div class="dlg-actions"><button class="btn btn-ghost" value="cancel">Отмена</button><button class="btn btn-danger" value="ok">Объявить</button></div></form></dialog>
+<dialog class="dlg" id="leave-dlg" aria-labelledby="leave-t" closedby="any"><h2 id="leave-t">Покинуть Медноград?</h2><p class="hint">Должность освободится.</p>
+<form method="dialog"><div class="dlg-actions"><button class="btn btn-ghost" value="cancel">Остаться</button><button class="btn btn-danger" value="ok">Покинуть</button></div></form></dialog>
+<p class="toast" role="status" hidden></p>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-cols">
+      <div><p class="brand"><span class="brand-mark" aria-hidden="true"></span><span translate="no">KOVA</span></p><p class="muted small">Сеть серверов. Не связано с Mojang и Microsoft.</p></div>
+      <nav aria-label="Сервера"><p class="fh">Сервера</p><a href="../#servers">TerraFirmaGreg</a><a href="../#servers">RPG · скоро</a><a href="../#cities">Поселения</a><a href="../#road">Дорожная карта</a><a href="../launcher/">Лаунчер</a></nav>
+      <nav aria-label="Аккаунт"><p class="fh">Аккаунт</p><a href="../login/">Вход</a><a href="../register/">Регистрация</a><a href="../cabinet/">Кабинет</a></nav>
+      <nav aria-label="Сообщество"><p class="fh">Сообщество</p><a href="#">Discord</a><a href="#">Правила</a><a href="#">Поддержка</a></nav>
+    </div>
+    <p class="foot-mark" translate="no" aria-hidden="true">KOVA</p>
+    <p class="foot-copy muted small">© 2026 KOVA</p>
+  </div>
+</footer>
+<script type="module" src="../settlement.js?v=12"></script>
+</body>
+</html>

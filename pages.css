@@ -411,3 +411,74 @@ textarea.inp { min-block-size: 80px; resize: vertical; font: 500 .8125rem ui-mon
 .city-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0; padding-top: 1.25rem; border-top: 1px solid var(--line); }
 .city-nums dt { font-size: .75rem; color: var(--muted); }
 .city-nums dd { margin: .2rem 0 0; font: 700 1.5rem var(--display); font-variant-numeric: tabular-nums; }
+
+/* ===== settlement page ===== */
+.st { width: min(1080px, 100% - 2 * var(--gutter)); margin-inline: auto; display: grid; gap: 1.5rem; }
+.st-hero { display: grid; grid-template-columns: auto 1fr auto; gap: clamp(1rem, 3vw, 2rem); align-items: center; padding-block: 1rem 1.5rem; view-transition-name: st-hero; }
+canvas.banner.huge { width: 88px; height: 120px; }
+.st-lvl { display: flex; align-items: center; gap: .75rem; margin-top: 1rem; max-inline-size: 320px; font-size: .875rem; color: var(--muted); }
+.st-lvl .lvlbar { flex: 1; }
+.st-hero-act { display: grid; justify-items: end; gap: .6rem; }
+.st-hero-act .pill { view-transition-name: role-pill; font-size: .9375rem; padding: .45rem .8rem; }
+.roles-pick { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; padding: 0; border: 0; }
+.roles-pick legend { width: 100%; margin-bottom: .6rem; font: 600 .75rem var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.roles-pick label { position: relative; flex: 1 1 150px; cursor: pointer; }
+.roles-pick input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.roles-pick span { display: grid; gap: .15rem; padding: .7rem .9rem; border-radius: 14px; background: rgb(255 255 255 / .04); box-shadow: inset 0 0 0 1px var(--line); transition: background-color .2s, box-shadow .2s; }
+.roles-pick b { font: 600 .9375rem var(--display); }
+.roles-pick small { font-size: .75rem; color: var(--muted); }
+.roles-pick label:hover span { background: rgb(255 255 255 / .07); }
+.roles-pick input:checked + span { background: rgb(255 207 122 / .1); box-shadow: inset 0 0 0 2px var(--sun); }
+[data-server="rpg"] .roles-pick input:checked + span { background: rgb(143 243 255 / .08); box-shadow: inset 0 0 0 2px var(--arcane); }
+.roles-pick input:focus-visible + span { outline: 2px solid var(--sun); outline-offset: 2px; }
+.st-app { overflow: hidden; view-transition-name: st-app; }
+.st-tabs { display: flex; gap: .25rem; overflow-x: auto; scrollbar-width: none; padding: .5rem .5rem 0; border-bottom: 1px solid var(--line); }
+.st-tabs [role="tab"] { flex: none; min-block-size: 44px; padding: .5rem 1rem; border: 0; border-radius: 10px 10px 0 0; font: 600 .9375rem var(--body); color: var(--muted); background: none; cursor: pointer; }
+.st-tabs [role="tab"]:hover { color: var(--ink); }
+.st-tabs [role="tab"][aria-selected="true"] { color: var(--ink); box-shadow: inset 0 -2px 0 var(--sun); }
+[data-server="rpg"] .st-tabs [role="tab"][aria-selected="true"] { box-shadow: inset 0 -2px 0 var(--arcane); }
+.st-tabs [data-tab="manage"] { margin-inline-start: auto; }
+.st-body { padding: clamp(1.25rem, 3vw, 2rem); }
+.st-panel { display: grid; gap: 1.25rem; max-inline-size: 760px; }
+.st-panel h3 { margin: 0; font: 700 1.25rem var(--display); }
+.st-panel h4 { margin: 0 0 .75rem; font: 600 .75rem var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.st-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.st-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0; }
+.st-nums dt { font-size: .75rem; color: var(--muted); }
+.st-nums dd { margin: .2rem 0 0; font: 800 2rem var(--display); font-variant-numeric: tabular-nums; }
+.st-card { padding: 1.25rem; border-radius: 16px; background: rgb(255 255 255 / .04); box-shadow: inset 0 0 0 1px var(--line); }
+.vote h3 { margin-bottom: 1rem; text-wrap: balance; }
+.vbar { height: 8px; background: rgb(255 122 138 / .35); }
+.vbar i { display: block; height: 100%; width: calc(var(--v) * 100%); background: #7dffa8; transition: width .4s var(--ease); }
+.vmeta { display: flex; justify-content: space-between; margin: .5rem 0 1rem; font-size: .8125rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.vmeta b { color: var(--ink); }
+.st-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+[data-v][aria-pressed="true"] { box-shadow: inset 0 0 0 2px #fff; }
+.chron-s { display: grid; gap: .6rem; margin: 0; padding: 0; list-style: none; font-size: .875rem; }
+.chron-s time { display: inline-block; min-inline-size: 4.5rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.ppl canvas { width: 36px; height: 36px; image-rendering: pixelated; border-radius: 8px; flex: none; }
+.inp.sel { inline-size: auto; min-block-size: 38px; padding: .3rem .6rem; font-size: .8125rem; }
+.stock { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.stock li { display: grid; padding: 1rem; border-radius: 14px; background: rgb(255 255 255 / .04); box-shadow: inset 0 0 0 1px var(--line); }
+.stock b { font: 800 1.5rem var(--display); font-variant-numeric: tabular-nums; }
+.stock span { font-size: .8125rem; color: var(--muted); }
+.taxv { font: 800 1.25rem var(--display); font-variant-numeric: tabular-nums; }
+.war { text-align: center; }
+.war-t { color: #ff9aa6 !important; }
+.score { margin: .25rem 0; font: 900 3rem/1 var(--display); font-variant-numeric: tabular-nums; }
+.score span { color: var(--muted); }
+.pill-war { color: #ff9aa6; background: rgb(255 107 125 / .1); }
+.st-form { max-inline-size: 440px; }
+@media (prefers-reduced-motion: no-preference) {
+  .st-app::view-transition-old(root), .st-app::view-transition-new(root) { animation-duration: .3s; }
+  ::view-transition-old(st-app) { animation: lw-out .25s var(--ease) both; }
+  ::view-transition-new(st-app) { animation: lw-in .4s var(--ease) both; }
+}
+@media (max-width: 700px) {
+  .st-hero { grid-template-columns: auto 1fr; }
+  .st-hero-act { grid-column: 1 / -1; justify-items: start; grid-auto-flow: column; justify-content: start; }
+  canvas.banner.huge { width: 66px; height: 90px; }
+  .st-nums dd { font-size: 1.5rem; }
+  .roles-pick label { flex-basis: 45%; }
+  .st-tabs [data-tab="manage"] { margin-inline-start: 0; }
+}
